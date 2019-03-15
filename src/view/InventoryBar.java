@@ -13,8 +13,7 @@ public class InventoryBar extends Group {
     public InventoryBar(Scene scene, int nbSlots) {
 
 	try {
-	    
-	    Image slotsImg = new Image(new FileInputStream("E:\\Images\\images_projet_java\\inventory_slot.png"));
+	    Image slotsImg = new Image(new FileInputStream("resources\\images\\inventory_slot.png"));
 
 	    StackPane imageContainer = new StackPane();
 	    Group slotsGroup = new Group();
