@@ -1,8 +1,11 @@
 package view;
 
+import java.io.FileInputStream;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -18,14 +21,17 @@ public class AppMainView extends Application {
 
 	root.requestFocus();
 	primaryStage.setScene(scene);
-
+	
+	primaryStage.getIcons().add(new Image(new FileInputStream("resources/images/crafting_table_icon.png")));
+	primaryStage.setTitle("Crafting System");
+	
 	InventoryBar inventoryBar = new InventoryBar(scene);
 	ResearchBar researchBar = new ResearchBar(scene);
 
 	root.getChildren().add(inventoryBar);
 	root.getChildren().add(researchBar);
-
-	scene.getStylesheets().add("/view/ResearchBar.css");
+	
+	scene.getStylesheets().add("ResearchBar.css");
 
 	primaryStage.show();
     }

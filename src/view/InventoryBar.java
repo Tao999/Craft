@@ -14,7 +14,7 @@ public class InventoryBar extends Group {
 
 	try {
 	    int nbSlots = 9;
-	    Image slotsImg = new Image(new FileInputStream("resources\\images\\inventory_slot.png"));
+	    Image slotsImg = new Image(new FileInputStream("resources/images/inventory_slot.png"));
 
 	    StackPane imageContainer = new StackPane();
 	    Group slotsGroup = new Group();
