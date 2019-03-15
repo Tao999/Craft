@@ -17,9 +17,9 @@ public class AppMainView extends Application {
 		Scene scene = new Scene(root, 854, 480, bgColor);
 		primaryStage.setScene(scene);
 		
-		InventoryBar ib = new InventoryBar(scene, 9);
+		InventoryBar inventoryBar = new InventoryBar(scene, 9);
 		
-		root.getChildren().add(ib);
+		root.getChildren().add(inventoryBar);
 
 		primaryStage.show();
 		

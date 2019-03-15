@@ -13,6 +13,7 @@ public class InventoryBar extends Group {
     public InventoryBar(Scene scene, int nbSlots) {
 
 	try {
+	    
 	    Image slotsImg = new Image(new FileInputStream("E:\\Images\\images_projet_java\\inventory_slot.png"));
 
 	    StackPane imageContainer = new StackPane();
@@ -26,8 +27,8 @@ public class InventoryBar extends Group {
 
 	    imageContainer.getChildren().addAll(slotsGroup);
 	    this.getChildren().add(imageContainer);
-
-	    this.setLayoutX((scene.getHeight() - imageContainer.getWidth()) / 2);
+	    
+	    this.setLayoutX((scene.getWidth() - nbSlots * 40) / 2);
 	    this.setLayoutY(scene.getHeight() - 40);
 
 	} catch (Exception e) {
