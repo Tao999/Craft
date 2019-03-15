@@ -27,7 +27,7 @@ public class InventoryBar extends Group {
 
 	    imageContainer.getChildren().addAll(slotsGroup);
 	    this.getChildren().add(imageContainer);
-	    
+
 	    this.setLayoutX((scene.getWidth() - nbSlots * 40) / 2);
 	    this.setLayoutY(scene.getHeight() - 40);
 
