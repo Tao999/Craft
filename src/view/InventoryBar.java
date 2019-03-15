@@ -10,9 +10,10 @@ import javafx.scene.layout.StackPane;
 
 public class InventoryBar extends Group {
 
-    public InventoryBar(Scene scene, int nbSlots) {
+    public InventoryBar(Scene scene) {
 
 	try {
+	    int nbSlots = 9;
 	    Image slotsImg = new Image(new FileInputStream("resources\\images\\inventory_slot.png"));
 
 	    StackPane imageContainer = new StackPane();
