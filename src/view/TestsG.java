@@ -52,9 +52,7 @@ public class TestsG extends Application {
                     new Stop(1, Color.web("#f2660f")),}));
         colors.widthProperty().bind(scene.widthProperty());
         colors.heightProperty().bind(scene.heightProperty());
-        Group blendModeGroup =
-                new Group(new Group(new Rectangle(scene.getWidth(), scene.getHeight(),
-                     Color.BLACK), circles), colors);
+        Group blendModeGroup = new Group(new Group(new Rectangle(scene.getWidth(), scene.getHeight(), Color.BLACK), circles), colors);
         colors.setBlendMode(BlendMode.OVERLAY);
         root.getChildren().add(blendModeGroup);      
         circles.setEffect(new BoxBlur(10, 10, 3));
