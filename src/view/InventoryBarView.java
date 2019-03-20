@@ -10,31 +10,36 @@ import javafx.scene.layout.StackPane;
 
 public class InventoryBarView extends Group {
 
-	public InventoryBarView(Scene scene) {
+    private int nbSlots;
+    private double lX;
+    private double lY;
 
-		try {
-			int nbSlots = 9;
-			Image slotsImg = new Image(new FileInputStream("resources/images/inventory_slot.png"));
+    public InventoryBarView(Scene scene) {
 
-			StackPane imageContainer = new StackPane();
-			Group slotsGroup = new Group();
+	try {
+	    nbSlots = 9;
+	    lX = ((scene.getWidth() / 3) * 2 - nbSlots * 40) / 2;
+	    lY = scene.getHeight() - 40;
+	    Image slotsImg = new Image(new FileInputStream("resources/images/inventory_slot.png"));
 
-			for (int i = 0; i < nbSlots; i++) {
-				ImageView invSlot = new ImageView(slotsImg);
-				invSlot.setX(i * 40);
-				slotsGroup.getChildren().add(invSlot);
-			}
+	    StackPane imageContainer = new StackPane();
+	    Group slotsGroup = new Group();
 
-			imageContainer.getChildren().addAll(slotsGroup);
-			this.getChildren().add(imageContainer);
+	    for (int i = 0; i < nbSlots; i++) {
+		ImageView invSlot = new ImageView(slotsImg);
+		invSlot.setX(i * 40);
+		slotsGroup.getChildren().add(invSlot);
+	    }
 
-			this.setLayoutX((scene.getWidth() - nbSlots * 40) / 2);
-			this.setLayoutY(scene.getHeight() - 40);
+	    imageContainer.getChildren().addAll(slotsGroup);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+	    this.getChildren().add(imageContainer);
+	    this.setLayoutX(lX);
+	    this.setLayoutY(lY);
+	} catch (Exception e) {
+	    e.printStackTrace();
 	}
+
+    }
 
 }

@@ -6,18 +6,24 @@ import javafx.scene.control.TextField;
 
 public class ResearchBarView extends Group {
 
-	public ResearchBarView(Scene scene) {
+    private double lX;
+    private double lY;
 
-		TextField textField = new TextField();
-		textField.setLayoutX(3);
-		textField.setLayoutY(3);
-		textField.setPrefWidth(400);
-		textField.setPromptText("Search");
+    public ResearchBarView(Scene scene) {
 
-		this.setLayoutX((scene.getWidth() - textField.getPrefWidth()) / 2);
-		this.setLayoutY(10);
+	TextField textField = new TextField();
+	textField.setLayoutX(3);
+	textField.setLayoutY(3);
+	textField.setPrefWidth(400);
+	textField.setPromptText("Search");
 
-		this.getChildren().add(textField);
-	}
+	lX = ((scene.getWidth() / 3) * 2 - textField.getPrefWidth()) / 2;
+	lY = 10;
+
+	this.setLayoutX(lX);
+	this.setLayoutY(lY);
+
+	this.getChildren().add(textField);
+    }
 
 }

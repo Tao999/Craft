@@ -11,31 +11,37 @@ import javafx.stage.Stage;
 
 public class AppMainView extends Application {
 
-	private Color bgColor = Color.rgb(127, 172, 255);
+    private Color bgColor = Color.rgb(127, 172, 255);
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
 
-		Group root = new Group();
-		Scene scene = new Scene(root, 854, 480, bgColor);
+	primaryStage.setResizable(false);
+	Group root = new Group();
+	Scene scene = new Scene(root, 854, 480, bgColor);
 
-		root.requestFocus();
-		primaryStage.setScene(scene);
+	root.requestFocus();
+	primaryStage.setScene(scene);
+	primaryStage.setHeight(scene.getHeight() + 29);
+	primaryStage.setWidth(scene.getWidth() + 6);
 
-		primaryStage.getIcons().add(new Image(new FileInputStream("resources/images/crafting_table_icon.png")));
-		primaryStage.setTitle("Crafting System");
+	primaryStage.getIcons().add(new Image(new FileInputStream("resources/images/crafting_table_icon.png")));
+	primaryStage.setTitle("Crafting System");
 
-		InventoryBarView inventoryBar = new InventoryBarView(scene);
-		ResearchBarView researchBar = new ResearchBarView(scene);
+	InventoryBarView inventoryBar = new InventoryBarView(scene);
+	ResearchBarView researchBar = new ResearchBarView(scene);
+	ItemListView itemList = new ItemListView(scene);
+	CraftView craftView = new CraftView(scene);
 
-		root.getChildren().add(inventoryBar);
-		root.getChildren().add(researchBar);
+	root.getChildren().add(inventoryBar);
+	root.getChildren().add(researchBar);
+	root.getChildren().add(itemList);
+	root.getChildren().add(craftView);
 
-		scene.getStylesheets().add("ResearchBar.css");
+	scene.getStylesheets().add("ResearchBar.css");
 
-		primaryStage.show();
-	}
+	primaryStage.show();
 	
-	
+    }
 
 }
