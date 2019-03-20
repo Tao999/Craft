@@ -1,4 +1,5 @@
 .text-field {
-    -fx-background-color: rgb(50, 50, 50, 0.8) ;
+	background-color: rgb(50, 50, 50, 0.8);
+    -fx-background-color: rgb(50, 50, 50, 0.8);
 	-fx-text-fill: white;
 }
