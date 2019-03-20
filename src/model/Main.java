@@ -16,6 +16,23 @@ public class Main {
 		myItem.setRecipe(craft);
 		System.out.println(myItem.toString());
 		System.out.println(i2.toString());
+
+		System.out.println("-------");
+
+		Inventory myInv = new Inventory();
+		for (int i = 0; i < 2; i++)
+			System.out.println(myInv.pushItem(myItem));
+
+		for (int i = -3; i < 3; i++)
+			System.out.println(myInv.putItem(i2, i));
+		System.out.println(myInv.toString());
+
+		System.out.println("item choisi : " + myInv.pickId(0));
+		System.out.println(myInv.toString());
+
+		myInv.eraseInventory();
+		System.out.println(myInv.toString());
+
 	}
 
 }
