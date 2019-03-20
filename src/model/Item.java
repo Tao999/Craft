@@ -1,7 +1,7 @@
 package model;
 
 public class Item {
-	static final int NOT_AN_ITEM = 0;
+	static final int NOT_AN_ITEM = -1;
 	private int id;
 	private String name;
 	// private image loll'image;
