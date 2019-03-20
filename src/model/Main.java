@@ -7,10 +7,10 @@ public class Main {
 		Item myItem = new Item(1, "carré de bois", "non");
 		Item i2 = new Item(2, "planchette de bois", "non");
 
-		Item[][] craft = new Item[3][3];
+		int[][] craft = new int[3][3];
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				craft[i][j] = i2;
+				craft[i][j] = i2.getId();
 			}
 		}
 		myItem.setRecipe(craft);

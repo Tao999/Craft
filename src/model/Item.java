@@ -5,7 +5,7 @@ public class Item {
 	private int id;
 	private String name;
 	// private image loll'image;
-	private Item[][] recipe;
+	private int[][] recipe;
 	String desciption;
 
 	public Item(int id, String name /* image, */, String description) {
@@ -16,7 +16,7 @@ public class Item {
 		this.desciption = description;
 	}
 
-	public Item(int id, String name /* image, */, String description, Item[][] recipe) {
+	public Item(int id, String name /* image, */, String description, int[][] recipe) {
 		this.id = id;
 		this.name = name;
 		this.recipe = recipe;
@@ -36,11 +36,11 @@ public class Item {
 		this.name = name;
 	}
 
-	public Item[][] getRecipe() {
+	public int[][] getRecipe() {
 		return recipe;
 	}
 
-	public void setRecipe(Item[][] recipe) {
+	public void setRecipe(int[][] recipe) {
 		this.recipe = recipe;
 	}
 
@@ -53,14 +53,13 @@ public class Item {
 			for (int i = 0; i < 3; i++) {
 				sTemp += "|";
 				for (int j = 0; j < 3; j++) {
-					sTemp += recipe[i][j].getId();
+					sTemp += recipe[i][j];
 					sTemp += "|";
 				}
 				sTemp += "\n+-+-+-+\n";
 			}
-		}
-		else
-			sTemp+="\npas de recette pour l'obtenir";
+		} else
+			sTemp += "\npas de recette pour l'obtenir";
 		return sTemp;
 	}
 
