@@ -9,20 +9,24 @@ public class Inventory {
 		this.inventory = new Item[NB_ITEM];
 	}
 
-	public Item getinventory(int index) {// retourne l'item de l'inventaire choisi (préférer pickInventory)
+	public Item getinventory(int index) {// retourne l'item de l'inventaire
+											// choisi (preferer pickInventory)
 		if (index >= NB_ITEM || index < 0)
 			return null;
 		return this.inventory[index];
 	}
 
-	public boolean putItem(Item item, int index) {// met un item dans une place choisi, si prise, retourne false
+	public boolean putItem(Item item, int index) {// met un item dans une place
+													// choisi, si prise,
+													// retourne false
 		if (index >= NB_ITEM || index < 0)
 			return false;
 		this.inventory[index] = item;
 		return true;
 	}
 
-	public boolean pushItem(Item item) {// met un item dans la première case libre, sinon retourne false
+	public boolean pushItem(Item item) {// met un item dans la premiere case
+										// libre, sinon retourne false
 		int iScan = 0;
 		while (inventory[iScan] != null) {
 			iScan++;
@@ -39,7 +43,8 @@ public class Inventory {
 		}
 	}
 
-	public int pickId(int index) {// retourne l'id de l'item choisi, et l'enlève de l'inventaire
+	public int pickId(int index) {// retourne l'id de l'item choisi, et
+									// l'enleve de l'inventaire
 		if (index >= NB_ITEM || index < 0)
 			return Item.NOT_AN_ITEM;
 		int temp = this.inventory[index].getId();
@@ -47,6 +52,7 @@ public class Inventory {
 		return temp;
 	}
 
+	@Override
 	public String toString() {
 		String sTemp = "";
 		String sLineSeparator = "+";
@@ -56,7 +62,7 @@ public class Inventory {
 		sTemp += "\r\n|";
 		for (int i = 0; i < NB_ITEM; i++) {
 			if (this.inventory[i] == null)
-				sTemp += "Ø|";
+				sTemp += "Ø|"; // ATTENTION
 			else
 				sTemp += this.inventory[i].getId() + "|";
 		}

@@ -16,7 +16,8 @@ public class Item {
 		this.desciption = description;
 	}
 
-	public Item(int id, String name /* image, */, String description, int[][] recipe) {
+	public Item(int id, String name /* image, */, String description,
+			int[][] recipe) {
 		this.id = id;
 		this.name = name;
 		this.recipe = recipe;
@@ -44,6 +45,7 @@ public class Item {
 		this.recipe = recipe;
 	}
 
+	@Override
 	public String toString() {
 		String sTemp = "id : " + this.id;
 		sTemp += "\nnom : " + this.name;
