@@ -22,8 +22,6 @@ public class AppMainView extends Application {
 
 	root.requestFocus();
 	primaryStage.setScene(scene);
-	primaryStage.setHeight(scene.getHeight() + 29);
-	primaryStage.setWidth(scene.getWidth() + 6);
 
 	primaryStage.getIcons().add(new Image(new FileInputStream("resources/images/crafting_table_icon.png")));
 	primaryStage.setTitle("Crafting System");

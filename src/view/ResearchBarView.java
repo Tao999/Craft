@@ -17,7 +17,7 @@ public class ResearchBarView extends Group {
 	textField.setPrefWidth(400);
 	textField.setPromptText("Search");
 
-	lX = ((scene.getWidth() / 3) * 2 - textField.getPrefWidth()) / 2;
+	lX = (((scene.getWidth() + 10) / 3) * 2 - textField.getPrefWidth()) / 2;
 	lY = 10;
 
 	this.setLayoutX(lX);
