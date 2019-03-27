@@ -9,7 +9,7 @@ public class Inventory {
 		this.inventory = new Item[NB_ITEM];
 	}
 
-	public Item getinventory(int index) {// retourne l'item de l'inventaire
+	public Item getInventory(int index) {// retourne l'item de l'inventaire
 											// choisi (preferer pickInventory)
 		if (index >= NB_ITEM || index < 0)
 			return null;
@@ -25,7 +25,7 @@ public class Inventory {
 		return true;
 	}
 
-	public boolean pushItem(Item item) {// met un item dans la premiere case
+	public boolean pushItem(Item item) {// met un item dans la premiere case libre
 										// libre, sinon retourne false
 		int iScan = 0;
 		while (inventory[iScan] != null) {
@@ -52,6 +52,12 @@ public class Inventory {
 		return temp;
 	}
 
+	public int getId(int index) {// retoure l'id de l'item choisi
+		if (index >= NB_ITEM || index < 0)
+			return Item.NOT_AN_ITEM;
+		return this.inventory[index].getId();
+	}
+	
 	@Override
 	public String toString() {
 		String sTemp = "";
@@ -62,7 +68,7 @@ public class Inventory {
 		sTemp += "\r\n|";
 		for (int i = 0; i < NB_ITEM; i++) {
 			if (this.inventory[i] == null)
-				sTemp += "Ø|"; // ATTENTION
+				sTemp += "/|";
 			else
 				sTemp += this.inventory[i].getId() + "|";
 		}

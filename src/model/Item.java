@@ -1,7 +1,7 @@
 package model;
 
 public class Item {
-	static final int NOT_AN_ITEM = -1;
+	static final int NOT_AN_ITEM = 0;
 	private int id;
 	private String name;
 	// private image loll'image;
@@ -16,8 +16,7 @@ public class Item {
 		this.desciption = description;
 	}
 
-	public Item(int id, String name /* image, */, String description,
-			int[][] recipe) {
+	public Item(int id, String name /* image, */, String description, int[][] recipe) {
 		this.id = id;
 		this.name = name;
 		this.recipe = recipe;
@@ -43,6 +42,19 @@ public class Item {
 
 	public void setRecipe(int[][] recipe) {
 		this.recipe = recipe;
+	}
+
+	@Override
+	public int hashCode() {
+		if (recipe == null)
+			return 0;
+		int code = 0;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				code += recipe[i][j] * (60 + i + j);
+			}
+		}
+		return code;
 	}
 
 	@Override
