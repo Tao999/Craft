@@ -45,10 +45,15 @@ public class AppBase {
 		return itemResearch.get(code);
 	}
 
-	public int getItemIdFromRecipe(int[][] recipe) {
-		int lineOffset = 0;
-		int colOffset = 0;
-		
+	public int getItemIdFromRecipe(int[][] recipe) {// A FINIIIR
+		if (recipe[0][0] == Item.NOT_AN_ITEM && recipe[0][1] == Item.NOT_AN_ITEM && recipe[0][2] == Item.NOT_AN_ITEM) {
+			recipe[0][0] = recipe[1][0];
+			recipe[0][1] = recipe[1][1];
+			recipe[0][2] = recipe[1][2];
+			recipe[3][0] = Item.NOT_AN_ITEM;
+			recipe[3][1] = Item.NOT_AN_ITEM;
+			recipe[3][2] = Item.NOT_AN_ITEM;
+		}
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
