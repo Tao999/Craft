@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 
@@ -52,6 +53,13 @@ public class CraftView extends Group {
     private Group drawCraft(double x, double y, double width, double height, double slotSize) {
 	int nbSlots = 3;
 	int slotMargin = 5;
+
+	double arrowRightUpCornerX = ((x + (width / 4 - nbSlots * (slotSize + slotMargin) / 2))
+		+ nbSlots * (slotSize + slotMargin) + (x + ((width / 4) * 3 - slotSize))) / 2 - slotSize;
+	double arrowRightUpCornerY = y + (height / 2 - (slotSize + slotMargin) + (slotSize + slotMargin) / 2);
+	double arrowSizeX = slotSize * 2;
+	double arrowSizeY = slotSize;
+
 	Group g1 = new Group();
 	Group slotsGroup = new Group();
 	InnerShadow is = new InnerShadow();
@@ -74,14 +82,20 @@ public class CraftView extends Group {
 	slotsGroup.setLayoutX((int) (x + (width / 4 - nbSlots * (slotSize + slotMargin) / 2)));
 	slotsGroup.setLayoutY((int) (y + (height / 2 - nbSlots * (slotSize + slotMargin) / 2)));
 
-//	Polygon craftingArrow = new Polygon();
-//	craftingArrow.getPoints().addAll(new Double[] { 1, 2, 3, 4, 5, 6, 7 });
-
-	Rectangle arrowSlot = new Rectangle(
-		(int) (((x + (width / 4 - nbSlots * (slotSize + slotMargin) / 2)) + nbSlots * (slotSize + slotMargin)
-			+ (x + ((width / 4) * 3 - slotSize))) / 2 - slotSize),
-		(int) (y + (height / 2 - (slotSize + slotMargin) + (slotSize + slotMargin) / 2)), slotSize * 2,
-		slotSize);
+	Group arrowSlot = new Group();
+	arrowSlot.setLayoutX(arrowRightUpCornerX);
+	arrowSlot.setLayoutY(arrowRightUpCornerY);
+	Polygon craftingArrow = new Polygon();
+	craftingArrow.getPoints()
+		.addAll(new Double[] { 0., arrowSizeY / 5 * 2, arrowSizeX / 3 * 2, arrowSizeY / 5 * 2,
+			arrowSizeX / 3 * 2, 0., arrowSizeX, arrowSizeY / 2, arrowSizeX / 3 * 2, arrowSizeY,
+			arrowSizeX / 3 * 2, arrowSizeY / 5 * 3, 0., arrowSizeY / 5 * 3 });
+	craftingArrow.setFill(Color.rgb(50, 50, 50, 0.8));
+	craftingArrow.setEffect(is);
+	craftingArrow.setStroke(Color.rgb(198, 198, 198));
+	craftingArrow.setStrokeWidth(1.);
+	craftingArrow.setStrokeType(StrokeType.INSIDE);
+	arrowSlot.getChildren().add(craftingArrow);
 
 	Rectangle recipiesSlot = new Rectangle((int) (x + ((width / 4) * 3 - slotSize)),
 		(int) (y + (height / 2 - slotSize)), slotSize * 2, slotSize * 2);
@@ -94,7 +108,6 @@ public class CraftView extends Group {
 	recipiesSlot.setStrokeType(StrokeType.INSIDE);
 
 	g1.getChildren().addAll(slotsGroup);
-//	g1.getChildren().add(craftingArrow);
 	g1.getChildren().add(arrowSlot);
 	g1.getChildren().add(recipiesSlot);
 	return g1;
