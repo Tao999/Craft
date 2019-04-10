@@ -52,7 +52,7 @@ public class MySAXApp extends DefaultHandler {
 	if ("".equals(uri))
 	    System.out.println("Start element: " + qName);
 	if (qName.equals("item")) {
-
+	    this.itemList.add(new Item());
 	} else
 	    System.out.println("Start element: {" + uri + "}" + name);
     }
