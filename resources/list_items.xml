@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<itemlist>
+	<item>
+		<id>0</id>
+		<name>wood stick</name>
+		<image>wood_stick.png</image>
+		<description>A stick of wood</description>
+	</item>
+	<item>
+		<id>1</id>
+		<name>coal</name>
+		<image>coal.png</image>
+		<description>Coal</description>
+	</item>
+	<item>
+		<id>2</id>
+		<name>torch</name>
+		<image>torch.png</image>
+		<description>A torch, can be crafted with coal and a stick of wook</description>
+	</item>
+</itemlist>

@@ -1,7 +1,6 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,6 +9,7 @@ import javafx.scene.effect.InnerShadow;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import model.Item;
 
 public class ItemListView extends Group {
 
@@ -17,6 +17,12 @@ public class ItemListView extends Group {
     private double width;
 
     public ItemListView(Scene scene, boolean isWindows) {
+
+	// ====================================================
+
+	ArrayList<Item> itemList = new ArrayList<>();
+
+	// ====================================================
 
 	int offset = (isWindows) ? 10 : 0;
 	width = (scene.getWidth() + offset) / 3;
@@ -32,13 +38,12 @@ public class ItemListView extends Group {
 	r.setEffect(is);
 
 	this.getChildren().add(r);
-	this.getChildren()
-		.add(createList(width, scene.getHeight(), new ArrayList<Integer>(Collections.nCopies(100, 0))));
+	this.getChildren().add(createList(width, scene.getHeight(), itemList));
 	this.setLayoutX(lX);
 
     }
 
-    private Group createList(double width, double height, ArrayList</* Items */Integer> itemList) {
+    private Group createList(double width, double height, ArrayList<Item> itemList) {
 	Group gp = new Group();
 	ScrollPane sp = new ScrollPane();
 
