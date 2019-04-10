@@ -7,6 +7,12 @@ public class Item {
 	// private image loll'image;
 	String desciption;
 
+	public Item() {
+		this.desciption = null;
+		this.id = NOT_AN_ITEM;
+		this.name = null;
+	}
+
 	public Item(int id, String name /* image, */, String description) {
 		this.id = id;
 		this.name = name;
