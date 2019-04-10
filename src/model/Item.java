@@ -26,6 +26,14 @@ public class Item {
 		this.name = name;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
+	}
+
 	@Override
 	public String toString() {
 		String sTemp = "id : " + this.id;

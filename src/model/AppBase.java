@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 public class AppBase {
 	private Inventory inventaire;
@@ -18,31 +17,43 @@ public class AppBase {
 
 	private void initBase() {
 		int id = Item.NOT_AN_ITEM + 1;
-		itemList.add(new Item(id++, "1er item", ""));
-		itemList.add(new Item(id++, "2eme item", ""));
-		itemList.add(new Item(id++, "3eme item", ""));
-		itemList.add(new Item(id++, "4eme item", ""));
+		itemList.add(new Item(id++, "Buche de Bois", ""));//id = 0
+		itemList.add(new Item(id++, "Planche de Bois", ""));//id = 1
+		itemList.add(new Item(id++, "Batton", ""));
+		itemList.add(new Item(id++, "Porte", ""));
 
 		int[][] crafto;
 		crafto = new int[3][3];
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
 				crafto[i][j] = Item.NOT_AN_ITEM;
-		crafto[0][1] = 0;
-		crafto[1][1] = 0;
-		this.createCraft(new Craft(crafto), 2);
+		crafto[0][0] = 0;
+		this.createCraft(new Craft(crafto), 1);
 
-		/*
-		 * crafto = new int[3][3]; for (int i = 0; i < 3; i++) for (int j = 0; j < 3;
-		 * j++) crafto[i][j] = Item.NOT_AN_ITEM; crafto[0][0] = 0; crafto[1][1] = 0;
-		 * crafto[2][2] = 2; this.createCraft(new Craft(crafto), 3);
-		 */
+		crafto = new int[3][3];
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				crafto[i][j] = Item.NOT_AN_ITEM;
+		crafto[0][0] = 1;
+		crafto[0][1] = 1;
+		this.createCraft(new Craft(crafto), 2);
+		
+		crafto = new int[3][3];
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				crafto[i][j] = Item.NOT_AN_ITEM;
+		crafto[0][0] = 1;
+		crafto[0][1] = 1;
+		crafto[0][2] = 1;
+		crafto[1][0] = 1;
+		crafto[1][1] = 1;
+		crafto[1][2] = 1;
+		this.createCraft(new Craft(crafto), 3);
+		
 
 	}
 
 	public int craftRecipe(Craft craft) {// Transforme un craft en id item
-		// if (!itemResearch.contains(craft))
-		// return Item.NOT_AN_ITEM;
 		Object temp = itemResearch.get(craft);
 		if (temp == null)
 			return Item.NOT_AN_ITEM;
