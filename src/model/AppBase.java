@@ -6,75 +6,69 @@ import java.util.Hashtable;
 public class AppBase {
 	private Inventory inventaire;
 	private ArrayList<Item> itemList;
-	private Hashtable<Integer, Integer> itemResearch;
+	private Hashtable<Craft, Integer> itemResearch;
 
 	public AppBase() {
 		inventaire = new Inventory();
 		itemList = new ArrayList<Item>();
-		itemResearch = new Hashtable<Integer, Integer>();
+		itemResearch = new Hashtable<Craft, Integer>();
 		this.initBase();
 	}
 
 	private void initBase() {
 		int id = Item.NOT_AN_ITEM + 1;
-		itemList.add(new Item(id++, "premiere item", ""));
+		itemList.add(new Item(id++, "Buche de Bois", ""));//id = 0
+		itemList.add(new Item(id++, "Planche de Bois", ""));//id = 1
+		itemList.add(new Item(id++, "Batton", ""));
+		itemList.add(new Item(id++, "Porte", ""));
 
-		int[][] craft = new int[3][3];
-		craft[0][0] = 1;
-		craft[0][1] = 1;
-		craft[0][2] = Item.NOT_AN_ITEM;
-		craft[1][0] = Item.NOT_AN_ITEM;
-		craft[1][1] = Item.NOT_AN_ITEM;
-		craft[1][2] = Item.NOT_AN_ITEM;
-		craft[2][0] = Item.NOT_AN_ITEM;
-		craft[2][1] = Item.NOT_AN_ITEM;
-		craft[2][2] = Item.NOT_AN_ITEM;
-		itemList.add(new Item(id++, "un deuxieme item", "", craft));
+		int[][] crafto;
+		crafto = new int[3][3];
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				crafto[i][j] = Item.NOT_AN_ITEM;
+		crafto[0][0] = 0;
+		this.createCraft(new Craft(crafto), 1);
 
-		for (int i = 0; i < itemList.size(); i++) {
-			Item temp;
-			temp = itemList.get(i);
-			if (temp.getRecipe() != null)
-				itemResearch.put(temp.hashCode(), temp.getId());
-		}
+		crafto = new int[3][3];
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				crafto[i][j] = Item.NOT_AN_ITEM;
+		crafto[0][0] = 1;
+		crafto[0][1] = 1;
+		this.createCraft(new Craft(crafto), 2);
+		
+		crafto = new int[3][3];
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				crafto[i][j] = Item.NOT_AN_ITEM;
+		crafto[0][0] = 1;
+		crafto[0][1] = 1;
+		crafto[0][2] = 1;
+		crafto[1][0] = 1;
+		crafto[1][1] = 1;
+		crafto[1][2] = 1;
+		this.createCraft(new Craft(crafto), 3);
+		
+
 	}
 
-	public int getItemIdFromRecipe(int code) {
-		if (!itemResearch.containsKey(code))
+	public int craftRecipe(Craft craft) {// Transforme un craft en id item
+		Object temp = itemResearch.get(craft);
+		if (temp == null)
 			return Item.NOT_AN_ITEM;
-		return itemResearch.get(code);
+		return (int) temp;
 	}
 
-	public int getItemIdFromRecipe(int[][] recipe) {// A FINIIIR
-		if (recipe[0][0] == Item.NOT_AN_ITEM && recipe[0][1] == Item.NOT_AN_ITEM && recipe[0][2] == Item.NOT_AN_ITEM) {
-			recipe[0][0] = recipe[1][0];
-			recipe[0][1] = recipe[1][1];
-			recipe[0][2] = recipe[1][2];
-			recipe[3][0] = Item.NOT_AN_ITEM;
-			recipe[3][1] = Item.NOT_AN_ITEM;
-			recipe[3][2] = Item.NOT_AN_ITEM;
-		}
-
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				System.out.print(recipe[i][j] + " ");
-			}
-			System.out.println();
-		}
-
-		return getItemIdFromRecipe(getCodeFromRecipe(recipe));
-	}
-
-	public int getCodeFromRecipe(int[][] recipe) {// transforme une recette en code
-		if (recipe == null)
-			return 0;
-		int code = 0;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				code += recipe[i][j] * (60 + i + j);
-			}
-		}
-		return code;
+	public boolean createCraft(Craft craft, int idResult) {// créer un craft dans la base de donnée
+		boolean verif = false;
+		for (int i = 0; i < itemList.size() && !verif; i++)
+			if (itemList.get(i).getId() == idResult)
+				verif = true;
+		if (!verif)
+			return false;
+		itemResearch.put(craft, idResult);
+		return true;
 	}
 
 	public Item getItemById(int id) {// retourne l'item par rapport à un id
