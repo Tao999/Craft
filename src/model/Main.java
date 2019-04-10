@@ -11,9 +11,9 @@ public class Main {
 			for (int j = 0; j < 3; j++)
 				crafto[i][j] = Item.NOT_AN_ITEM;
 		crafto[0][1] = 0;
-		crafto[1][1] = 0;
+		int temp;
 
-		System.out.println(app.craftRecipe(new Craft(crafto)));
+		System.out.println(temp = app.craftRecipe(new Craft(crafto)));
 	}
 
 }
