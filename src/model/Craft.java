@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Craft {
+
 	private class Trouple {
 		private int x;
 		private int y;
