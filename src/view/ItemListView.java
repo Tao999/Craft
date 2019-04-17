@@ -1,11 +1,17 @@
 package view;
 
+import java.io.FileReader;
 import java.util.ArrayList;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.InnerShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
@@ -20,7 +26,23 @@ public class ItemListView extends Group {
 
 	// ====================================================
 
-	ArrayList<Item> itemList = new ArrayList<>();
+	ArrayList<Item> itemList = null;
+
+	try {
+	    XMLReader xr = XMLReaderFactory.createXMLReader();
+	    ItemListBuilder handler = new ItemListBuilder();
+	    xr.setContentHandler(handler);
+	    xr.setErrorHandler(handler);
+
+	    FileReader r = new FileReader("resources/list_items.xml");
+	    xr.parse(new InputSource(r));
+
+	    itemList = handler.getItems();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+
+	System.out.println(itemList);
 
 	// ====================================================
 
@@ -37,6 +59,7 @@ public class ItemListView extends Group {
 	r.setFill(Color.rgb(50, 50, 50, 0.8));
 	r.setEffect(is);
 
+	this.setOnMouseDragged(null);
 	this.getChildren().add(r);
 	this.getChildren().add(createList(width, scene.getHeight(), itemList));
 	this.setLayoutX(lX);
@@ -48,10 +71,12 @@ public class ItemListView extends Group {
 	ScrollPane sp = new ScrollPane();
 
 	int nbItems = itemList.size();
+//	int nbItems = 100;
 	int xOffset = 15;
 	int yOffset = 15;
 	int slotSize = 40;
 	int slotMargin = 5;
+	int imageMargin = 3;
 	int nbSlotsLine = (int) (width / (slotSize + slotMargin));
 	int nbSlotsRow = nbItems / nbSlotsLine + 1;
 
@@ -66,6 +91,18 @@ public class ItemListView extends Group {
 		r.setStroke(Color.rgb(198, 198, 198));
 		r.setStrokeWidth(2.);
 		r.setStrokeType(StrokeType.INSIDE);
+
+		// ICI
+
+		ImageView imageView = new ImageView(itemList.get(i * j).getImage());
+
+		imageView.setX(imageMargin);
+		imageView.setY(imageMargin);
+		imageView.setFitHeight(slotSize - 2 * imageMargin);
+		imageView.setFitWidth(slotSize - 2 * imageMargin);
+
+		// ICI
+
 		slotsGroup.getChildren().add(r);
 	    }
 	}
