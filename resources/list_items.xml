@@ -16,12 +16,12 @@
 			<triplet>
 				<x>0</x>
 				<y>0</y>
-				<id>5</id>
+				<id_t>5</id_t>
 			</triplet>
 			<triplet>
 				<x>0</x>
 				<y>1</y>
-				<id>5</id>
+				<id_t>5</id_t>
 			</triplet>
 		</craft>
 	</item>
@@ -40,12 +40,12 @@
 			<triplet>
 				<x>0</x>
 				<y>0</y>
-				<id>263</id>
+				<id_t>263</id_t>
 			</triplet>
 			<triplet>
 				<x>0</x>
 				<y>1</y>
-				<id>280</id>
+				<id_t>280</id_t>
 			</triplet>
 		</craft>
 	</item>

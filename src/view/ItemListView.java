@@ -22,141 +22,98 @@ import model.Item;
 
 public class ItemListView extends Group {
 
-    private double lX;
-    private double width;
+	private double lX;
+	private double width;
 
-    public ItemListView(Scene scene, boolean isWindows) {
+	public ItemListView(Scene scene, boolean isWindows) {
 
-	// ====================================================
+		ArrayList<Item> itemList = null;
 
-	ArrayList<Item> itemList = null;
+		try {
+			XMLReader xr = XMLReaderFactory.createXMLReader();
+			ItemListBuilder handler = new ItemListBuilder();
+			xr.setContentHandler(handler);
+			xr.setErrorHandler(handler);
 
-	try {
-	    XMLReader xr = XMLReaderFactory.createXMLReader();
-	    ItemListBuilder handler = new ItemListBuilder();
-	    xr.setContentHandler(handler);
-	    xr.setErrorHandler(handler);
+			FileReader r = new FileReader("resources/list_items.xml");
+			xr.parse(new InputSource(r));
 
-	    FileReader r = new FileReader("resources/list_items.xml");
-	    xr.parse(new InputSource(r));
+			itemList = handler.getItems();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	    itemList = handler.getItems();
-	} catch (Exception e) {
-	    e.printStackTrace();
+		int offset = (isWindows) ? 10 : 0;
+		width = (scene.getWidth() + offset) / 3;
+		lX = width * 2;
+
+		Rectangle r = new Rectangle(width, scene.getHeight() + offset);
+		InnerShadow is = new InnerShadow();
+
+		is.setOffsetX(5.);
+		is.setOffsetY(5.);
+
+		r.setFill(Color.rgb(50, 50, 50, 0.8));
+		r.setEffect(is);
+
+		this.setOnMouseDragged(null);
+		this.getChildren().add(r);
+		this.getChildren().add(createList(width, scene.getHeight(), itemList));
+		this.setLayoutX(lX);
+
 	}
 
-	System.out.println(itemList);
+	private Group createList(double width, double height, ArrayList<Item> itemList) {
+		Group gp = new Group();
+		ScrollPane sp = new ScrollPane();
 
-	// ====================================================
+		TilePane tp = new TilePane();
 
-	int offset = (isWindows) ? 10 : 0;
-	width = (scene.getWidth() + offset) / 3;
-	lX = width * 2;
+		int nbItems = itemList.size();
+		int xOffset = 15;
+		int yOffset = 15;
+		int slotSize = 40;
+		int slotMargin = 10;
+		int imageMargin = 3;
+		int nbRows = (int) (width / (slotSize + slotMargin));
 
-	Rectangle r = new Rectangle(width, scene.getHeight() + offset);
-	InnerShadow is = new InnerShadow();
+		tp.setOrientation(Orientation.HORIZONTAL);
+		tp.setTileAlignment(Pos.TOP_LEFT);
+		tp.setPrefRows(nbRows);
+		tp.setHgap(slotMargin);
+		tp.setVgap(slotMargin);
 
-	is.setOffsetX(5.);
-	is.setOffsetY(5.);
+		for (int i = 0; i < nbItems; i++) {
 
-	r.setFill(Color.rgb(50, 50, 50, 0.8));
-	r.setEffect(is);
+			Group slot = new Group();
+			Rectangle r = new Rectangle(slotSize, slotSize);
+			ImageView iv = new ImageView(itemList.get(i).getImage());
 
-	this.setOnMouseDragged(null);
-	this.getChildren().add(r);
-	this.getChildren().add(createList(width, scene.getHeight(), itemList));
-	this.setLayoutX(lX);
+			r.setFill(Color.rgb(50, 50, 50, 0.8));
+			r.setArcWidth(5);
+			r.setArcHeight(5);
+			r.setStroke(Color.rgb(198, 198, 198));
+			r.setStrokeWidth(2.);
+			r.setStrokeType(StrokeType.INSIDE);
 
-    }
+			iv.setX(imageMargin);
+			iv.setY(imageMargin);
+			iv.setFitHeight(slotSize - 2 * imageMargin);
+			iv.setFitWidth(slotSize - 2 * imageMargin);
 
-    private Group createList(double width, double height, ArrayList<Item> itemList) {
-	Group gp = new Group();
-	ScrollPane sp = new ScrollPane();
+			slot.getChildren().add(r);
+			slot.getChildren().add(iv);
+			tp.getChildren().add(slot);
+		}
 
-	TilePane tp = new TilePane();
+		sp.setContent(tp);
+		sp.setPannable(true);
+		sp.setPrefSize(width, height - 15);
 
-	int nbItems = itemList.size();
-	int xOffset = 15;
-	int yOffset = 15;
-	int slotSize = 40;
-	int slotMargin = 10;
-	int imageMargin = 3;
-	int nbRows = (int) (width / (slotSize + slotMargin));
-//	int nbLines = nbItems / nbRows + 1;
-
-	tp.setOrientation(Orientation.HORIZONTAL);
-	tp.setTileAlignment(Pos.TOP_LEFT);
-	tp.setPrefRows(nbRows);
-	tp.setHgap(slotMargin);
-	tp.setVgap(slotMargin);
-
-	for (int i = 0; i < nbItems; i++) {
-
-	    Group slot = new Group();
-
-	    Rectangle r = new Rectangle(slotSize, slotSize);
-	    r.setFill(Color.rgb(50, 50, 50, 0.8));
-	    r.setArcWidth(5);
-	    r.setArcHeight(5);
-	    r.setStroke(Color.rgb(198, 198, 198));
-	    r.setStrokeWidth(2.);
-	    r.setStrokeType(StrokeType.INSIDE);
-
-	    // ICI
-
-	    ImageView iv = new ImageView(itemList.get(i).getImage());
-	    iv.setX(imageMargin);
-	    iv.setY(imageMargin);
-	    iv.setFitHeight(slotSize - 2 * imageMargin);
-	    iv.setFitWidth(slotSize - 2 * imageMargin);
-
-	    // ICI
-
-	    slot.getChildren().add(r);
-	    slot.getChildren().add(iv);
-	    tp.getChildren().add(slot);
+		gp.getChildren().add(sp);
+		gp.setLayoutX(xOffset);
+		gp.setLayoutY(yOffset);
+		return gp;
 	}
-
-//	Group slotsGroup = new Group();
-//	for (int i = 0; i < nbRows; i++) {
-//	    for (int j = 0; j < nbLines; j++) {
-//		Group slot = new Group();
-//		
-//		Rectangle r = new Rectangle(i * (slotSize + slotMargin), j * (slotSize + slotMargin), slotSize,
-//			slotSize);
-//		r.setFill(Color.rgb(50, 50, 50, 0.8));
-//		r.setArcWidth(5);
-//		r.setArcHeight(5);
-//		r.setStroke(Color.rgb(198, 198, 198));
-//		r.setStrokeWidth(2.);
-//		r.setStrokeType(StrokeType.INSIDE);
-//
-//		// ICI
-//
-//		ImageView imageView = new ImageView(itemList.get(i * j).getImage());
-//
-//		imageView.setX(imageMargin);
-//		imageView.setY(imageMargin);
-//		imageView.setFitHeight(slotSize - 2 * imageMargin);
-//		imageView.setFitWidth(slotSize - 2 * imageMargin);
-//
-//		// ICI
-//
-//		slot.getChildren().add(r);
-//		slot.getChildren().add(imageView);
-//
-//		slotsGroup.getChildren().add(slot);
-//	    }
-//	}
-
-	sp.setContent(tp);
-	sp.setPannable(true);
-	sp.setPrefSize(width, height - 15);
-
-	gp.getChildren().add(sp);
-	gp.setLayoutX(xOffset);
-	gp.setLayoutY(yOffset);
-	return gp;
-    }
 
 }

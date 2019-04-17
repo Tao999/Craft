@@ -30,10 +30,6 @@ public class Craft {
 
 	private ArrayList<Trouple> craft;
 
-	public Craft() {
-		craft = null;
-	}
-
 	public Craft(int[][] tabCraft) {
 		craft = new ArrayList<Trouple>();
 
@@ -82,10 +78,10 @@ public class Craft {
 
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
 		return this.hashCode() == obj.hashCode();
 	}
 
+	@Override
 	public String toString() {
 		String sTemp = "";
 		for (int i = 0; i < craft.size(); i++) {

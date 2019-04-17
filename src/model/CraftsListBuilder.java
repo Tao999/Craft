@@ -8,15 +8,30 @@ import org.xml.sax.helpers.DefaultHandler;
 public class CraftsListBuilder extends DefaultHandler {
 
 	private Hashtable<Craft, Integer> craftsList;
-	private Craft currentCraft;
 	private int currentItemId;
 	private String currentElement = "";
-	private int[] currentTriplet;
+	private int[] currentTriplet = {
+		-1,
+		-1,
+		Item.NOT_AN_ITEM
+	};
 	private int[][] currentCraftMatrix = {
-			{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
-			{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
-			{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM }
-		};
+		{
+			Item.NOT_AN_ITEM,
+			Item.NOT_AN_ITEM,
+			Item.NOT_AN_ITEM
+		},
+		{
+			Item.NOT_AN_ITEM,
+			Item.NOT_AN_ITEM,
+			Item.NOT_AN_ITEM
+		},
+		{
+			Item.NOT_AN_ITEM,
+			Item.NOT_AN_ITEM,
+			Item.NOT_AN_ITEM
+		}
+	};
 
 	public CraftsListBuilder() {
 		super();
@@ -37,8 +52,13 @@ public class CraftsListBuilder extends DefaultHandler {
 
 	@Override
 	public void endElement(String uri, String name, String qName) {
+		if (qName.equals("triplet")) {
+			for (int i = 0; i < currentTriplet.length; i++)
+				currentCraftMatrix[currentTriplet[0]][currentTriplet[1]] = currentTriplet[2];
+			resetTriplet();
+		}
 		if (qName.equals("craft")) {
-			craftsList.put(currentCraft, currentItemId);
+			craftsList.put(new Craft(currentCraftMatrix), currentItemId);
 			resetMatrix();
 		}
 		this.currentElement = null;
@@ -52,14 +72,23 @@ public class CraftsListBuilder extends DefaultHandler {
 		}
 		if (this.currentElement.equals("id"))
 			this.currentItemId = Integer.parseInt(value);
-		if (this.currentElement.equals(""))
-		// TODO
+		if (this.currentElement.equals("x"))
+			this.currentTriplet[0] = Integer.parseInt(value);
+		if (this.currentElement.equals("y"))
+			this.currentTriplet[1] = Integer.parseInt(value);
+		if (this.currentElement.equals("id_t"))
+			this.currentTriplet[2] = Integer.parseInt(value);
 	}
 
 	private void resetMatrix() {
 		for (int i = 0; i < currentCraftMatrix.length; i++)
 			for (int j = 0; j < currentCraftMatrix[i].length; j++)
 				currentCraftMatrix[i][j] = Item.NOT_AN_ITEM;
+	}
+
+	private void resetTriplet() {
+		for (int i = 0; i < currentTriplet.length; i++)
+			currentTriplet[i] = -1;
 	}
 
 }

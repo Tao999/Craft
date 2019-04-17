@@ -3,63 +3,63 @@ package model;
 import javafx.scene.image.Image;
 
 public class Item {
-    static final int NOT_AN_ITEM = -1;
-    private int id;
-    private String name;
-    private Image image;
-    String desciption;
+	static final int NOT_AN_ITEM = -1;
+	private int id;
+	private String name;
+	private Image image;
+	String desciption;
 
-    public Item() {
-	this.desciption = null;
-	this.id = NOT_AN_ITEM;
-	this.name = null;
-    }
+	public Item() {
+		this.desciption = null;
+		this.id = NOT_AN_ITEM;
+		this.name = null;
+	}
 
-    public Item(int id, String name, String description, Image image) {
-	this.id = id;
-	this.name = name;
-	this.image = image;
-	this.desciption = description;
-    }
+	public Item(int id, String name, String description, Image image) {
+		this.id = id;
+		this.name = name;
+		this.image = image;
+		this.desciption = description;
+	}
 
-    public int getId() {
-	return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getName() {
-	return name;
-    }
-    
-    public String getDescription() {
-    	return desciption;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Image getImage() {
-	return this.image;
-    }
+	public String getDescription() {
+		return desciption;
+	}
 
-    public void setName(String name) {
-	this.name = name;
-    }
+	public Image getImage() {
+		return this.image;
+	}
 
-    public void setId(int id) {
-	this.id = id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setDesciption(String desciption) {
-	this.desciption = desciption;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setImage(Image image) {
-	this.image = image;
-    }
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
+	}
 
-    @Override
-    public String toString() {
-	String sTemp = "id : " + this.id;
-	sTemp += "\nnom : " + this.name;
-	sTemp += "\ndesc : " + this.desciption;
-	return sTemp;
-    }
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		String sTemp = "id : " + this.id;
+		sTemp += "\nnom : " + this.name;
+		sTemp += "\ndesc : " + this.desciption;
+		return sTemp;
+	}
 
 }
