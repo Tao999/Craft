@@ -29,6 +29,10 @@ public class Item {
     public String getName() {
 	return name;
     }
+    
+    public String getDescription() {
+    	return desciption;
+    }
 
     public Image getImage() {
 	return this.image;

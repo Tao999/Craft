@@ -2,10 +2,28 @@
 
 <itemlist>
 	<item>
+		<id>5</id>
+		<name>Wood</name>
+		<description>not a stick of wood</description>
+		<image>5-0.png</image>
+	</item>
+	<item>
 		<id>280</id>
 		<name>Stick</name>
 		<description>A stick of wood</description>
 		<image>280-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id>5</id>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id>5</id>
+			</triplet>
+		</craft>
 	</item>
 	<item>
 		<id>263</id>
@@ -18,5 +36,17 @@
 		<name>Torch</name>
 		<description>A torch, can be crafted with coal and a stick of wook</description>
 		<image>50-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id>263</id>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id>280</id>
+			</triplet>
+		</craft>
 	</item>
 </itemlist>
