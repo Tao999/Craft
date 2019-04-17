@@ -14,6 +14,7 @@ public class ItemListBuilder extends DefaultHandler {
 
     private ArrayList<Item> itemList = new ArrayList<>();
     private String currentElement = "";
+    private String path = "/images/items/";
 
     public ItemListBuilder() {
 	super();
@@ -53,11 +54,16 @@ public class ItemListBuilder extends DefaultHandler {
 	    this.itemList.get(this.itemList.size() - 1).setDesciption(value);
 	if (this.currentElement != null && this.currentElement.equals("image"))
 	    try {
-		this.itemList.get(this.itemList.size() - 1)
-			.setImage(new Image(new FileInputStream("../resources/" + value)));
+		System.out.println(path + value);
+		System.out.println(getClass());
+		String filePath = getClass().getResource(path + value).getFile();
+		System.out.println(filePath);
+		Image img = new Image(new FileInputStream(filePath));
+		this.itemList.get(this.itemList.size() - 1).setImage(img);
 	    } catch (FileNotFoundException e) {
 		e.printStackTrace();
 	    }
+
     }
 
 }

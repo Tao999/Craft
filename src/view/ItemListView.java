@@ -7,11 +7,14 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
@@ -70,44 +73,83 @@ public class ItemListView extends Group {
 	Group gp = new Group();
 	ScrollPane sp = new ScrollPane();
 
+	TilePane tp = new TilePane();
+
 	int nbItems = itemList.size();
-//	int nbItems = 100;
 	int xOffset = 15;
 	int yOffset = 15;
 	int slotSize = 40;
-	int slotMargin = 5;
+	int slotMargin = 10;
 	int imageMargin = 3;
-	int nbSlotsLine = (int) (width / (slotSize + slotMargin));
-	int nbSlotsRow = nbItems / nbSlotsLine + 1;
+	int nbRows = (int) (width / (slotSize + slotMargin));
+//	int nbLines = nbItems / nbRows + 1;
 
-	Group slotsGroup = new Group();
-	for (int i = 0; i < nbSlotsLine; i++) {
-	    for (int j = 0; j < nbSlotsRow; j++) {
-		Rectangle r = new Rectangle(i * (slotSize + slotMargin), j * (slotSize + slotMargin), slotSize,
-			slotSize);
-		r.setFill(Color.rgb(50, 50, 50, 0.8));
-		r.setArcWidth(5);
-		r.setArcHeight(5);
-		r.setStroke(Color.rgb(198, 198, 198));
-		r.setStrokeWidth(2.);
-		r.setStrokeType(StrokeType.INSIDE);
+	tp.setOrientation(Orientation.HORIZONTAL);
+	tp.setTileAlignment(Pos.TOP_LEFT);
+	tp.setPrefRows(nbRows);
+	tp.setHgap(slotMargin);
+	tp.setVgap(slotMargin);
 
-		// ICI
+	for (int i = 0; i < nbItems; i++) {
 
-		ImageView imageView = new ImageView(itemList.get(i * j).getImage());
+	    Group slot = new Group();
 
-		imageView.setX(imageMargin);
-		imageView.setY(imageMargin);
-		imageView.setFitHeight(slotSize - 2 * imageMargin);
-		imageView.setFitWidth(slotSize - 2 * imageMargin);
+	    Rectangle r = new Rectangle(slotSize, slotSize);
+	    r.setFill(Color.rgb(50, 50, 50, 0.8));
+	    r.setArcWidth(5);
+	    r.setArcHeight(5);
+	    r.setStroke(Color.rgb(198, 198, 198));
+	    r.setStrokeWidth(2.);
+	    r.setStrokeType(StrokeType.INSIDE);
 
-		// ICI
+	    // ICI
 
-		slotsGroup.getChildren().add(r);
-	    }
+	    ImageView iv = new ImageView(itemList.get(i).getImage());
+	    iv.setX(imageMargin);
+	    iv.setY(imageMargin);
+	    iv.setFitHeight(slotSize - 2 * imageMargin);
+	    iv.setFitWidth(slotSize - 2 * imageMargin);
+
+	    // ICI
+
+	    slot.getChildren().add(r);
+	    slot.getChildren().add(iv);
+	    tp.getChildren().add(slot);
 	}
 
-	sp.setContent(slotsGroup);
+//	Group slotsGroup = new Group();
+//	for (int i = 0; i < nbRows; i++) {
+//	    for (int j = 0; j < nbLines; j++) {
+//		Group slot = new Group();
+//		
+//		Rectangle r = new Rectangle(i * (slotSize + slotMargin), j * (slotSize + slotMargin), slotSize,
+//			slotSize);
+//		r.setFill(Color.rgb(50, 50, 50, 0.8));
+//		r.setArcWidth(5);
+//		r.setArcHeight(5);
+//		r.setStroke(Color.rgb(198, 198, 198));
+//		r.setStrokeWidth(2.);
+//		r.setStrokeType(StrokeType.INSIDE);
+//
+//		// ICI
+//
+//		ImageView imageView = new ImageView(itemList.get(i * j).getImage());
+//
+//		imageView.setX(imageMargin);
+//		imageView.setY(imageMargin);
+//		imageView.setFitHeight(slotSize - 2 * imageMargin);
+//		imageView.setFitWidth(slotSize - 2 * imageMargin);
+//
+//		// ICI
+//
+//		slot.getChildren().add(r);
+//		slot.getChildren().add(imageView);
+//
+//		slotsGroup.getChildren().add(slot);
+//	    }
+//	}
+
+	sp.setContent(tp);
 	sp.setPannable(true);
 	sp.setPrefSize(width, height - 15);
 
