@@ -17,7 +17,7 @@ import javafx.stage.WindowEvent;
 import model.Item;
 import view.View;
 
-public class MainApp extends Application {
+public class ApplicationLauncher extends Application {
 
 	public static void main(String[] args) {
 		launch(args);

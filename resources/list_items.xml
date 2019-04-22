@@ -170,30 +170,6 @@
 		<image>27-0.png</image>
 	</item>
 	<item>
-		<id>280</id>
-		<name>Stick</name>
-		<description>A stick of wood</description>
-		<image>280-0.png</image>
-		<craft>
-			<triplet>
-				<x>0</x>
-				<y>0</y>
-				<id_t>5</id_t>
-			</triplet>
-			<triplet>
-				<x>0</x>
-				<y>1</y>
-				<id_t>5</id_t>
-			</triplet>
-		</craft>
-	</item>
-	<item>
-		<id>263</id>
-		<name>Coal</name>
-		<description>Coal</description>
-		<image>263-0.png</image>
-	</item>
-	<item>
 		<id>50</id>
 		<name>Torch</name>
 		<description>A torch, can be crafted with coal and a stick of wook</description>
@@ -208,6 +184,30 @@
 				<x>0</x>
 				<y>1</y>
 				<id_t>280</id_t>
+			</triplet>
+		</craft>
+	</item>
+	<item>
+		<id>263</id>
+		<name>Coal</name>
+		<description>Coal</description>
+		<image>263-0.png</image>
+	</item>
+	<item>
+		<id>280</id>
+		<name>Stick</name>
+		<description>A stick of wood</description>
+		<image>280-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>5</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>5</id_t>
 			</triplet>
 		</craft>
 	</item>
