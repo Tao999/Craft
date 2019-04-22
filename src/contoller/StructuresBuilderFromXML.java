@@ -1,7 +1,5 @@
 package contoller;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -82,12 +80,8 @@ public class StructuresBuilderFromXML extends DefaultHandler {
 			this.itemList.get(this.itemList.size() - 1).setDesciption(value);
 		}
 		if (this.currentElement != null && this.currentElement.equals("image")) {
-			try {
-				this.itemList.get(this.itemList.size() - 1)
-						.setImage(new Image(new FileInputStream(getClass().getResource(path + value).getFile())));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			this.itemList.get(this.itemList.size() - 1)
+					.setImage(new Image(getClass().getResourceAsStream(path + value)));
 		}
 		if (this.currentElement != null && this.currentElement.equals("x")) {
 			this.currentTriplet[0] = Integer.parseInt(value);

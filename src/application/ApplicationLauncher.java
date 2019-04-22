@@ -1,7 +1,5 @@
 package application;
 
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 import org.xml.sax.InputSource;
@@ -26,12 +24,12 @@ public class ApplicationLauncher extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-//		Hashtable<Craft, Integer> craftsList = null;
 		ArrayList<Item> itemList = null;
+//		Hashtable<Craft, Integer> craftsList = null;
 
 		StructuresBuilderFromXML handler = generateLists();
-//		craftsList = handler.getCrafts();
 		itemList = handler.getItems();
+//		craftsList = handler.getCrafts();
 
 		View view = new View(itemList);
 //		Model model = new Model();
@@ -39,7 +37,7 @@ public class ApplicationLauncher extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.setScene(view.getScene());
 		primaryStage.setTitle("Crafting System");
-		primaryStage.getIcons().add(new Image(new FileInputStream("resources/images/crafting_table_icon.png")));
+		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/crafting_table_icon.png")));
 		primaryStage.show();
 
 //		new Controller(view, model).start();
@@ -53,8 +51,9 @@ public class ApplicationLauncher extends Application {
 		xr.setContentHandler(handler);
 		xr.setErrorHandler(handler);
 
-		FileReader r = new FileReader("resources/list_items.xml");
-		xr.parse(new InputSource(r));
+		InputSource in = new InputSource(getClass().getClassLoader().getResource("list_items.xml").toExternalForm());
+
+		xr.parse(in);
 		return handler;
 	}
 
