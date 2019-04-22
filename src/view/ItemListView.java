@@ -12,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
@@ -66,7 +67,6 @@ public class ItemListView extends Group {
 	private Group createList(double width, double height, ArrayList<Item> itemList) {
 		Group gp = new Group();
 		ScrollPane sp = new ScrollPane();
-
 		TilePane tp = new TilePane();
 
 		int nbItems = itemList.size();
@@ -84,10 +84,12 @@ public class ItemListView extends Group {
 		tp.setVgap(slotMargin);
 
 		for (int i = 0; i < nbItems; i++) {
-
+			Item item = itemList.get(i);
 			Group slot = new Group();
 			Rectangle r = new Rectangle(slotSize, slotSize);
-			ImageView iv = new ImageView(itemList.get(i).getImage());
+			ImageView iv = new ImageView(item.getImage());
+
+			Tooltip.install(slot, new Tooltip(item.getDescription()));
 
 			r.setFill(Color.rgb(50, 50, 50, 0.8));
 			r.setArcWidth(5);

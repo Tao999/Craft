@@ -1,11 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <itemlist>
+	<!-- <item>
+		<id>0</id>
+		<name>Air</name>
+		<description>Air - Useless</description>
+		<image>0-0.png</image>
+	</item> -->
+	<item>
+		<id>1</id>
+		<name>Stone</name>
+		<description>Stone</description>
+		<image>1-0.png</image>
+	</item>
+	<item>
+		<id>2</id>
+		<name>Grass</name>
+		<description>Grass</description>
+		<image>2-0.png</image>
+	</item>
+	<item>
+		<id>3</id>
+		<name>Dirt</name>
+		<description>Dirt</description>
+		<image>3-0.png</image>
+	</item>
+	<item>
+		<id>4</id>
+		<name>Cobblestone</name>
+		<description>Cobblestone</description>
+		<image>4-0.png</image>
+	</item>
 	<item>
 		<id>5</id>
-		<name>Wood</name>
-		<description>not a stick of wood</description>
+		<name>Oak Wood Plank</name>
+		<description>Oak Wood Plank</description>
 		<image>5-0.png</image>
+	</item>
+	<item>
+		<id>6</id>
+		<name>Oak Sapling</name>
+		<description>Oak Sapling</description>
+		<image>6-0.png</image>
+	</item>
+	<item>
+		<id>7</id>
+		<name>Bedrock</name>
+		<description>Bedrock</description>
+		<image>7-0.png</image>
+	</item>
+<!-- 	<item>
+		<id>8</id>
+		<name>Flowing Water</name>
+		<description>Flowing Water - Useless</description>
+		<image>8-0.png</image>
+	</item> -->
+<!-- 	<item>
+		<id>9</id>
+		<name>Still Water</name>
+		<description>Still Water - Useless</description>
+		<image>9-0.png</image>
+	</item> -->
+<!-- 	<item>
+		<id>10</id>
+		<name>Flowing Lava</name>
+		<description>Flowing Lava - Useless</description>
+		<image>10-0.png</image>
+	</item> -->
+<!-- 	<item>
+		<id>11</id>
+		<name>Still Lava</name>
+		<description>Still Lava - Useless</description>
+		<image>11-0.png</image>
+	</item> -->
+	<item>
+		<id>12</id>
+		<name>Sand</name>
+		<description>Sand</description>
+		<image>12-0.png</image>
+	</item>
+	<item>
+		<id>13</id>
+		<name>Gravel</name>
+		<description>Gravel</description>
+		<image>13-0.png</image>
+	</item>
+	<item>
+		<id>14</id>
+		<name>Gold Ore</name>
+		<description>Gold Ore</description>
+		<image>14-0.png</image>
+	</item>
+	<item>
+		<id>15</id>
+		<name>Iron Ore</name>
+		<description>Iron Ore</description>
+		<image>15-0.png</image>
+	</item>
+	<item>
+		<id>16</id>
+		<name>Coal Ore</name>
+		<description>Coal Ore</description>
+		<image>16-0.png</image>
+	</item>
+	<item>
+		<id>17</id>
+		<name>Oak Wood</name>
+		<description>Oak Wood</description>
+		<image>17-0.png</image>
+	</item>
+	<item>
+		<id>18</id>
+		<name>Oak Leaves</name>
+		<description>Oak Leaves</description>
+		<image>18-0.png</image>
+	</item>
+	<item>
+		<id>19</id>
+		<name>Sponge</name>
+		<description>Sponge</description>
+		<image>19-0.png</image>
+	</item>
+	<item>
+		<id>20</id>
+		<name>Glass</name>
+		<description>Glass</description>
+		<image>20-0.png</image>
+	</item>
+	<item>
+		<id>21</id>
+		<name>Lapis Lazuli Ore</name>
+		<description>Lapis Lazuli Ore</description>
+		<image>21-0.png</image>
+	</item>
+	<item>
+		<id>22</id>
+		<name>Lapis Lazuli Block</name>
+		<description>Lapis Lazuli Block</description>
+		<image>22-0.png</image>
+	</item>
+	<item>
+		<id>23</id>
+		<name>Dispenser</name>
+		<description>Dispenser</description>
+		<image>23-0.png</image>
+	</item>
+	<item>
+		<id>24</id>
+		<name>Sandstone</name>
+		<description>Sandstone</description>
+		<image>24-0.png</image>
+	</item>
+	<item>
+		<id>25</id>
+		<name>Note Block</name>
+		<description>Note Block</description>
+		<image>25-0.png</image>
+	</item>
+<!-- 	<item>
+		<id>26</id>
+		<name>Bed</name>
+		<description>Bed</description>
+		<image>26-0.png</image>
+	</item> -->
+	<item>
+		<id>27</id>
+		<name>Powered Rail</name>
+		<description>Powered Rail</description>
+		<image>27-0.png</image>
 	</item>
 	<item>
 		<id>280</id>

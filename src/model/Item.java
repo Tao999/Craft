@@ -3,7 +3,7 @@ package model;
 import javafx.scene.image.Image;
 
 public class Item {
-	static final int NOT_AN_ITEM = -1;
+	public static final int NOT_AN_ITEM = -1;
 	private int id;
 	private String name;
 	private Image image;
