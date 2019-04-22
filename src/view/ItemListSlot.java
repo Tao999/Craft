@@ -12,7 +12,12 @@ import model.Item;
 
 public class ItemListSlot extends Group {
 
+	private Item item;
+
 	public ItemListSlot(Item item, int slotSize, int imageMargin) {
+
+		this.item = item;
+
 		Rectangle r = new Rectangle(slotSize, slotSize);
 		ImageView iv = new ImageView(item.getImage());
 
@@ -46,6 +51,10 @@ public class ItemListSlot extends Group {
 
 		this.getChildren().add(r);
 		this.getChildren().add(iv);
+	}
+
+	public Item getItem() {
+		return this.item;
 	}
 
 }

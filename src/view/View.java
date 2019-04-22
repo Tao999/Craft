@@ -13,6 +13,11 @@ public class View {
 	private Color bgColor = Color.rgb(127, 172, 255);
 	private ArrayList<Item> itemList = null;
 
+	public InventoryBarView inventoryBar;
+	public ItemListView itemListView;
+	public ResearchBarView researchBar;
+	public CraftView craftView;
+
 	public View(ArrayList<Item> itemList) {
 		super();
 		this.itemList = itemList;
@@ -25,10 +30,10 @@ public class View {
 
 		root.requestFocus();
 
-		InventoryBarView inventoryBar = new InventoryBarView(scene, isWindows());
-		ItemListView itemListView = new ItemListView(scene, isWindows(), this.itemList);
-		ResearchBarView researchBar = new ResearchBarView(scene, isWindows(), itemListView);
-		CraftView craftView = new CraftView(scene, isWindows());
+		this.inventoryBar = new InventoryBarView(scene, isWindows());
+		this.itemListView = new ItemListView(scene, isWindows(), this.itemList);
+		this.researchBar = new ResearchBarView(scene, isWindows(), itemListView);
+		this.craftView = new CraftView(scene, itemList, isWindows());
 
 		root.getChildren().add(inventoryBar);
 		root.getChildren().add(itemListView);

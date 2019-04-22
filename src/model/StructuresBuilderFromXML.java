@@ -1,4 +1,4 @@
-package contoller;
+package model;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -7,8 +7,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javafx.scene.image.Image;
-import model.Craft;
-import model.Item;
 
 public class StructuresBuilderFromXML extends DefaultHandler {
 

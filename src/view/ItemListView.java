@@ -19,11 +19,13 @@ public class ItemListView extends Group {
 	private double width;
 	private Scene scene;
 	private ArrayList<Item> itemList;
+	private ArrayList<ItemListSlot> slots;
 
 	public ItemListView(Scene scene, boolean isWindows, ArrayList<Item> itemList) {
 
 		this.itemList = itemList;
 		this.scene = scene;
+		this.slots = new ArrayList<ItemListSlot>();
 
 		int offset = (isWindows) ? 10 : 0;
 		width = (scene.getWidth() + offset) / 3;
@@ -66,6 +68,7 @@ public class ItemListView extends Group {
 		for (int i = 0; i < nbItems; i++) {
 			Item item = itemList.get(i);
 			ItemListSlot slot = new ItemListSlot(item, slotSize, imageMargin);
+			slots.add(slot);
 			tp.getChildren().add(slot);
 		}
 
@@ -89,6 +92,10 @@ public class ItemListView extends Group {
 				tmp.add(item);
 
 		this.getChildren().set(1, createList(width, this.scene.getHeight(), tmp));
+	}
+
+	public ArrayList<ItemListSlot> getItems() {
+		return this.slots;
 	}
 
 }
