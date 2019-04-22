@@ -15,31 +15,15 @@ import model.Item;
 public class StructuresBuilderFromXML extends DefaultHandler {
 
 	private ArrayList<Item> itemList = new ArrayList<>();
+	private Hashtable<Craft, Integer> craftsList = new Hashtable<>();
 	private String currentElement = "";
 	private String path = "/images/items/";
-	private Hashtable<Craft, Integer> craftsList;
 	private int currentItemId;
-	private int[] currentTriplet = {
-		-1,
-		-1,
-		Item.NOT_AN_ITEM
-	};
+	private int[] currentTriplet = { -1, -1, Item.NOT_AN_ITEM };
 	private int[][] currentCraftMatrix = {
-		{
-			Item.NOT_AN_ITEM,
-			Item.NOT_AN_ITEM,
-			Item.NOT_AN_ITEM
-		},
-		{
-			Item.NOT_AN_ITEM,
-			Item.NOT_AN_ITEM,
-			Item.NOT_AN_ITEM
-		},
-		{
-			Item.NOT_AN_ITEM,
-			Item.NOT_AN_ITEM,
-			Item.NOT_AN_ITEM
-		}
+		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
+		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
+		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM }
 	};
 
 	public StructuresBuilderFromXML() {

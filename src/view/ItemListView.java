@@ -1,11 +1,6 @@
 package view;
 
-import java.io.FileReader;
 import java.util.ArrayList;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -26,23 +21,7 @@ public class ItemListView extends Group {
 	private double lX;
 	private double width;
 
-	public ItemListView(Scene scene, boolean isWindows) {
-
-		ArrayList<Item> itemList = null;
-
-		try {
-			XMLReader xr = XMLReaderFactory.createXMLReader();
-			ItemListBuilder handler = new ItemListBuilder();
-			xr.setContentHandler(handler);
-			xr.setErrorHandler(handler);
-
-			FileReader r = new FileReader("resources/list_items.xml");
-			xr.parse(new InputSource(r));
-
-			itemList = handler.getItems();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public ItemListView(Scene scene, boolean isWindows, ArrayList<Item> itemList) {
 
 		int offset = (isWindows) ? 10 : 0;
 		width = (scene.getWidth() + offset) / 3;
