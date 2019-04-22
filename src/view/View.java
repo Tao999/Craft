@@ -26,16 +26,16 @@ public class View {
 		root.requestFocus();
 
 		InventoryBarView inventoryBar = new InventoryBarView(scene, isWindows());
-		ResearchBarView researchBar = new ResearchBarView(scene, isWindows());
-		ItemListView itemList = new ItemListView(scene, isWindows(), this.itemList);
+		ItemListView itemListView = new ItemListView(scene, isWindows(), this.itemList);
+		ResearchBarView researchBar = new ResearchBarView(scene, isWindows(), itemListView);
 		CraftView craftView = new CraftView(scene, isWindows());
 
 		root.getChildren().add(inventoryBar);
+		root.getChildren().add(itemListView);
 		root.getChildren().add(researchBar);
-		root.getChildren().add(itemList);
 		root.getChildren().add(craftView);
 
-		scene.getStylesheets().add("ResearchBar.css");
+		scene.getStylesheets().add("Style.css");
 
 		return scene;
 	}

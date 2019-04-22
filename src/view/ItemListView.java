@@ -7,21 +7,23 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tooltip;
 import javafx.scene.effect.InnerShadow;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeType;
 import model.Item;
 
 public class ItemListView extends Group {
 
 	private double lX;
 	private double width;
+	private Scene scene;
+	private ArrayList<Item> itemList;
 
 	public ItemListView(Scene scene, boolean isWindows, ArrayList<Item> itemList) {
+
+		this.itemList = itemList;
+		this.scene = scene;
 
 		int offset = (isWindows) ? 10 : 0;
 		width = (scene.getWidth() + offset) / 3;
@@ -40,7 +42,6 @@ public class ItemListView extends Group {
 		this.getChildren().add(r);
 		this.getChildren().add(createList(width, scene.getHeight(), itemList));
 		this.setLayoutX(lX);
-
 	}
 
 	private Group createList(double width, double height, ArrayList<Item> itemList) {
@@ -64,26 +65,7 @@ public class ItemListView extends Group {
 
 		for (int i = 0; i < nbItems; i++) {
 			Item item = itemList.get(i);
-			Group slot = new Group();
-			Rectangle r = new Rectangle(slotSize, slotSize);
-			ImageView iv = new ImageView(item.getImage());
-
-			Tooltip.install(slot, new Tooltip(item.getDescription()));
-
-			r.setFill(Color.rgb(50, 50, 50, 0.8));
-			r.setArcWidth(5);
-			r.setArcHeight(5);
-			r.setStroke(Color.rgb(198, 198, 198));
-			r.setStrokeWidth(2.);
-			r.setStrokeType(StrokeType.INSIDE);
-
-			iv.setX(imageMargin);
-			iv.setY(imageMargin);
-			iv.setFitHeight(slotSize - 2 * imageMargin);
-			iv.setFitWidth(slotSize - 2 * imageMargin);
-
-			slot.getChildren().add(r);
-			slot.getChildren().add(iv);
+			ItemListSlot slot = new ItemListSlot(item, slotSize, imageMargin);
 			tp.getChildren().add(slot);
 		}
 
@@ -94,7 +76,19 @@ public class ItemListView extends Group {
 		gp.getChildren().add(sp);
 		gp.setLayoutX(xOffset);
 		gp.setLayoutY(yOffset);
+
 		return gp;
+	}
+
+	public void searchItem(String str) {
+		ArrayList<Item> tmp = new ArrayList<>();
+
+		for (Item item : this.itemList)
+			if (item.getName().toLowerCase().contains(str.toLowerCase())
+					|| item.getDescription().toLowerCase().contains(str.toLowerCase()))
+				tmp.add(item);
+
+		this.getChildren().set(1, createList(width, this.scene.getHeight(), tmp));
 	}
 
 }

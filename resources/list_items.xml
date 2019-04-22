@@ -170,6 +170,48 @@
 		<image>27-0.png</image>
 	</item>
 	<item>
+		<id>28</id>
+		<name>Detector Rail</name>
+		<description>Detector Rail</description>
+		<image>28-0.png</image>
+	</item>
+	<item>
+		<id>29</id>
+		<name>Sticky Piston</name>
+		<description>Sticky Piston</description>
+		<image>29-0.png</image>
+	</item>
+	<item>
+		<id>30</id>
+		<name>Cobweb</name>
+		<description>Cobweb</description>
+		<image>30-0.png</image>
+	</item>
+	<item>
+		<id>31</id>
+		<name>Grass</name>
+		<description>Tall Grass</description>
+		<image>31-1.png</image>
+	</item>
+	<item>
+		<id>32</id>
+		<name>Dead Bush</name>
+		<description>Dead Bush</description>
+		<image>32-0.png</image>
+	</item>
+	<item>
+		<id>33</id>
+		<name>Piston</name>
+		<description>Piston</description>
+		<image>33-0.png</image>
+	</item>
+<!-- 	<item>
+		<id>34</id>
+		<name>Piston Head</name>
+		<description>Piston Head</description>
+		<image>34-0.png</image>
+	</item> -->
+	<item>
 		<id>50</id>
 		<name>Torch</name>
 		<description>A torch, can be crafted with coal and a stick of wook</description>
