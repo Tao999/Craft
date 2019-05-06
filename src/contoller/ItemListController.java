@@ -24,9 +24,8 @@ public class ItemListController extends Observable {
 	}
 
 	private void listenAllItems() {
-		for (ItemListSlot itemSlot : this.itemListView.getItems()) {
+		for (ItemListSlot itemSlot : this.itemListView.getItems())
 			listenItem(itemSlot);
-		}
 	}
 
 	private void listenItem(final ItemListSlot itemSlot) {

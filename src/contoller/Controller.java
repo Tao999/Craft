@@ -17,7 +17,7 @@ public class Controller {
 		// TODO Auto-generated method stub
 		ItemListController ilC = new ItemListController(view.itemListView);
 		CraftController cC = new CraftController(view.craftView, model);
-		ResearchBarController rbC = new ResearchBarController(view.researchBarView, view.itemListView, cC);
+		ResearchBarController rbC = new ResearchBarController(view.researchBarView, view.itemListView, ilC);
 //		InventoryController iC = new InventoryController();
 
 		ilC.run();

@@ -30,7 +30,6 @@ public class CraftController extends Observable {
 	}
 
 	public void run() {
-		System.out.println("test");
 		listenAllSlots();
 	}
 
