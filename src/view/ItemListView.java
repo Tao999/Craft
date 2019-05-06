@@ -68,7 +68,6 @@ public class ItemListView extends Group {
 		for (Item item : itemList) {
 			ItemListSlot slot = new ItemListSlot(item, slotSize, imageMargin);
 			slots.add(slot);
-//			System.out.println("pawl");
 			tp.getChildren().add(slot);
 		}
 
@@ -98,7 +97,6 @@ public class ItemListView extends Group {
 	}
 
 	public ArrayList<ItemListSlot> getItems() {
-//		System.out.println(slots.size());
 		return this.slots;
 	}
 
