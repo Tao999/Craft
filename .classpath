@@ -5,7 +5,9 @@
 			<accessrule kind="accessible" pattern="javafx/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="tests/" kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="lib" path="/opt/arduino-1.8.8/java/lib/ext/jfxrt.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
