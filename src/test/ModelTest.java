@@ -1,3 +1,5 @@
+package test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -14,7 +16,6 @@ import model.Craft;
 import model.Item;
 import model.Model;
 import model.StructuresBuilderFromXML;
-import view.View;
 
 class ModelTest {
 
@@ -51,6 +52,15 @@ class ModelTest {
 
 	@Test
 	public void testCraftRecipe1() {
+		int[][] craftMatrix = { { Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
+				{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
+				{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM } };
+
+		assertEquals(Item.NOT_AN_ITEM, model.craftRecipe(new Craft(craftMatrix)));
+	}
+
+	@Test
+	public void testCraftRecipe2() {
 		int[][] craftMatrix = { { 0, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
 				{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
 				{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM } };
@@ -58,36 +68,25 @@ class ModelTest {
 		assertEquals(Item.NOT_AN_ITEM, model.craftRecipe(new Craft(craftMatrix)));
 	}
 
-	public void testCraftRecipe2() {
-		int[][] craftMatrix = { { 5, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM }, { 5, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
+	@Test
+	public void testCraftRecipe3() {
+		int[][] craftMatrix = { { 5, 5, Item.NOT_AN_ITEM }, { Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
 				{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM } };
 
 		assertEquals(280, model.craftRecipe(new Craft(craftMatrix)));
 	}
 
 	@Test
-	public void testCreateCraft() {
-		fail("Not yet implemented");
+	public void testCreateCraft1() {
+		int[][] craftMatrix = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
+		assertEquals(Item.NOT_AN_ITEM, model.craftRecipe(new Craft(craftMatrix)));
 	}
 
 	@Test
-	public void testPutItem() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPushItem() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEraseInventory() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPickId() {
-		fail("Not yet implemented");
+	public void testCreateCraft2() {
+		int[][] craftMatrix = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
+		model.createCraft(new Craft(craftMatrix), 2);
+		assertEquals(2, model.craftRecipe(new Craft(craftMatrix)));
 	}
 
 }
