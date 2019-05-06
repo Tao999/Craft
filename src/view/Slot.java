@@ -12,15 +12,39 @@ import model.Item;
 
 public class Slot extends Group {
 
+	private int itemID;
 	private ImageView iv;
 	private ArrayList<Item> itemList;
 	private int imageMargin = 3;
 	private double slotSize;
 	private double posX;
 	private double posY;
+	private int nbX;
+	private int nbY;
+
+	public Slot(double x, double y, double slotsize, ArrayList<Item> itemList, InnerShadow is) {
+		super();
+		this.posX = x;
+		this.posY = y;
+		this.slotSize = slotsize;
+		this.itemList = itemList;
+
+		Rectangle r = new Rectangle(x, y, slotsize, slotSize);
+		r.setFill(Color.rgb(50, 50, 50, 0.8));
+		r.setArcWidth(5);
+		r.setArcHeight(5);
+		r.setEffect(is);
+		r.setStroke(Color.rgb(198, 198, 198));
+		r.setStrokeWidth(2.);
+		r.setStrokeType(StrokeType.INSIDE);
+
+		this.getChildren().add(r);
+	}
 
 	public Slot(int i, int j, int slotMargin, double slotSize, ArrayList<Item> itemList, InnerShadow is) {
-
+		super();
+		this.nbX = i;
+		this.nbY = j;
 		this.posX = i * (slotSize + slotMargin);
 		this.posY = j * (slotSize + slotMargin);
 		this.itemList = itemList;
@@ -39,6 +63,7 @@ public class Slot extends Group {
 	}
 
 	public void changeItem(int itemId) {
+		this.itemID = itemId;
 		if (itemId != Item.NOT_AN_ITEM) {
 			if (this.getChildren().size() > 1)
 				this.getChildren().remove(this.getChildren().size() - 1);
@@ -53,11 +78,19 @@ public class Slot extends Group {
 		}
 	}
 
+	public int getItemId() {
+		return this.itemID;
+	}
+
 	private Item getItemFromId(int itemId) {
 		for (Item item : itemList) {
 			if (item.getId() == itemId)
 				return item;
 		}
 		return null;
+	}
+
+	public int[] getIndex() {
+		return new int[] { this.nbX, this.nbY };
 	}
 }

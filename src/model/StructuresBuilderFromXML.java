@@ -70,6 +70,7 @@ public class StructuresBuilderFromXML extends DefaultHandler {
 
 		if (this.currentElement != null && this.currentElement.equals("id")) {
 			this.itemList.get(this.itemList.size() - 1).setId(Integer.parseInt(value));
+			this.currentItemId = Integer.parseInt(value);
 		}
 		if (this.currentElement != null && this.currentElement.equals("name")) {
 			this.itemList.get(this.itemList.size() - 1).setName(value);

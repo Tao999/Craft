@@ -1,5 +1,6 @@
 package view;
 
+import javafx.beans.property.StringProperty;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -17,9 +18,6 @@ public class ResearchBarView extends Group {
 		textField.setLayoutY(3);
 		textField.setPrefWidth(400);
 		textField.setPromptText("Search");
-		textField.textProperty().addListener((observable, oldValue, newValue) -> {
-			ilv.searchItem(newValue);
-		});
 
 		lX = (((scene.getWidth() + offset) / 3) * 2 - textField.getPrefWidth()) / 2;
 		lY = 10;
@@ -28,6 +26,10 @@ public class ResearchBarView extends Group {
 		this.setLayoutY(lY);
 
 		this.getChildren().add(textField);
+	}
+
+	public StringProperty getTextFieldText() {
+		return textField.textProperty();
 	}
 
 }

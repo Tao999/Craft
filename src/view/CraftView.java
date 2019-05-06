@@ -19,9 +19,10 @@ public class CraftView extends Group {
 	private double width;
 	private double slotSize;
 
-	private ArrayList<Group> craftingSlots;
+	private ArrayList<Slot> craftingSlots;
 	private ArrayList<Slot> inventorySlots;
 	private ArrayList<Item> itemList;
+	private Slot recipiesSlot;
 
 	public CraftView(Scene scene, ArrayList<Item> itemList, boolean isWindows) {
 
@@ -78,21 +79,8 @@ public class CraftView extends Group {
 		is.setOffsetY(3.);
 		for (int i = 0; i < nbSlots; i++) {
 			for (int j = 0; j < nbSlots; j++) {
-				Group slot = new Group();
-				Rectangle r = new Rectangle(i * (slotSize + slotMargin), j * (slotSize + slotMargin), slotSize,
-						slotSize);
-
-				r.setFill(Color.rgb(50, 50, 50, 0.8));
-				r.setArcWidth(5);
-				r.setArcHeight(5);
-				r.setEffect(is);
-				r.setStroke(Color.rgb(198, 198, 198));
-				r.setStrokeWidth(2.);
-				r.setStrokeType(StrokeType.INSIDE);
-
+				Slot slot = new Slot(i, j, slotMargin, slotSize, itemList, is);
 				this.craftingSlots.add(slot);
-
-				slot.getChildren().add(r);
 				slotsGroup.getChildren().add(slot);
 			}
 		}
@@ -103,33 +91,32 @@ public class CraftView extends Group {
 		Group arrowSlot = new Group();
 		arrowSlot.setLayoutX(arrowRightUpCornerX);
 		arrowSlot.setLayoutY(arrowRightUpCornerY);
-		Polygon craftingArrow = new Polygon();
-		craftingArrow.getPoints()
-				.addAll(new Double[] { 0., arrowSizeY / 5 * 2, arrowSizeX / 3 * 2, arrowSizeY / 5 * 2,
-					arrowSizeX / 3 * 2, 0., arrowSizeX, arrowSizeY / 2, arrowSizeX / 3 * 2, arrowSizeY,
-					arrowSizeX / 3 * 2, arrowSizeY / 5 * 3, 0., arrowSizeY / 5 * 3 });
-		craftingArrow.setFill(Color.rgb(50, 50, 50, 0.8));
-		craftingArrow.setEffect(is);
-		craftingArrow.setStroke(Color.rgb(198, 198, 198));
-		craftingArrow.setStrokeWidth(1.);
-		craftingArrow.setStrokeType(StrokeType.INSIDE);
-		arrowSlot.getChildren().add(craftingArrow);
+		arrowSlot.getChildren().add(createCraftingArrow(arrowSizeX, arrowSizeY, is));
 
 		// Recipy slot
-		Rectangle recipiesSlot = new Rectangle((int) (x + ((width / 4) * 3 - slotSize)),
-				(int) (y + (height / 2 - slotSize)), slotSize * 2, slotSize * 2);
-		recipiesSlot.setFill(Color.rgb(50, 50, 50, 0.8));
-		recipiesSlot.setArcWidth(5);
-		recipiesSlot.setArcHeight(5);
-		recipiesSlot.setEffect(is);
-		recipiesSlot.setStroke(Color.rgb(198, 198, 198));
-		recipiesSlot.setStrokeWidth(2.);
-		recipiesSlot.setStrokeType(StrokeType.INSIDE);
+		recipiesSlot = new Slot(x + ((width / 4) * 3 - slotSize), y + (height / 2 - slotSize), slotSize * 2, itemList,
+				is);
 
 		g1.getChildren().addAll(slotsGroup);
 		g1.getChildren().add(arrowSlot);
 		g1.getChildren().add(recipiesSlot);
+
 		return g1;
+	}
+
+	private Polygon createCraftingArrow(double arrowSizeX, double arrowSizeY, InnerShadow is) {
+		Polygon p = new Polygon();
+		p.getPoints().addAll(
+				new Double[] { 0., arrowSizeY / 5 * 2, arrowSizeX / 3 * 2, arrowSizeY / 5 * 2,
+					arrowSizeX / 3 * 2, 0., arrowSizeX, arrowSizeY / 2, arrowSizeX / 3 * 2, arrowSizeY,
+					arrowSizeX / 3 * 2, arrowSizeY / 5 * 3, 0., arrowSizeY / 5 * 3
+				});
+		p.setFill(Color.rgb(50, 50, 50, 0.8));
+		p.setEffect(is);
+		p.setStroke(Color.rgb(198, 198, 198));
+		p.setStrokeWidth(1.);
+		p.setStrokeType(StrokeType.INSIDE);
+		return p;
 	}
 
 	private Group drawInventory(double x, double y, double width, double height, double slotSize) {
@@ -163,6 +150,14 @@ public class CraftView extends Group {
 
 	public ArrayList<Slot> getInventorySlots() {
 		return this.inventorySlots;
+	}
+
+	public ArrayList<Slot> getCraftingSlots() {
+		return this.craftingSlots;
+	}
+
+	public Slot getRecipiesSlot() {
+		return this.recipiesSlot;
 	}
 
 }

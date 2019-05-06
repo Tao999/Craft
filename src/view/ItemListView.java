@@ -86,6 +86,9 @@ public class ItemListView extends Group {
 	public void searchItem(String str) {
 		ArrayList<Item> tmp = new ArrayList<>();
 
+		// Le .contains sur une arraylist est certes tres couteux, mais on a pour
+		// l'instant une petite base d'objets et c'est rapide a faire, mais dans l'ideal
+		// il faudrait que changer cette methode de recherche
 		for (Item item : this.itemList)
 			if (item.getName().toLowerCase().contains(str.toLowerCase())
 					|| item.getDescription().toLowerCase().contains(str.toLowerCase()))

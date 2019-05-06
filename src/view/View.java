@@ -15,7 +15,7 @@ public class View {
 
 	public InventoryBarView inventoryBar;
 	public ItemListView itemListView;
-	public ResearchBarView researchBar;
+	public ResearchBarView researchBarView;
 	public CraftView craftView;
 
 	public View(ArrayList<Item> itemList) {
@@ -32,12 +32,12 @@ public class View {
 
 		this.inventoryBar = new InventoryBarView(scene, isWindows());
 		this.itemListView = new ItemListView(scene, isWindows(), this.itemList);
-		this.researchBar = new ResearchBarView(scene, isWindows(), itemListView);
+		this.researchBarView = new ResearchBarView(scene, isWindows(), itemListView);
 		this.craftView = new CraftView(scene, itemList, isWindows());
 
 		root.getChildren().add(inventoryBar);
 		root.getChildren().add(itemListView);
-		root.getChildren().add(researchBar);
+		root.getChildren().add(researchBarView);
 		root.getChildren().add(craftView);
 
 		scene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());

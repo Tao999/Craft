@@ -65,7 +65,7 @@ public class Model {
 		return (int) temp;
 	}
 
-	public boolean createCraft(Craft craft, int idResult) {// créer un craft dans la base de donnée
+	public boolean createCraft(Craft craft, int idResult) {// creer un craft dans la base de donnée
 		boolean verif = false;
 		for (int i = 0; i < itemList.size() && !verif; i++)
 			if (itemList.get(i).getId() == idResult)
@@ -76,7 +76,7 @@ public class Model {
 		return true;
 	}
 
-	public Item getItemById(int id) {// retourne l'item par rapport à un id
+	public Item getItemById(int id) {// retourne l'item par rapport a un id
 		for (int i = 0; i < itemList.size(); i++) {
 			if (itemList.get(i).getId() == id)
 				return itemList.get(i);
