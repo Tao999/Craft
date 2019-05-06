@@ -9,12 +9,12 @@ public class ResearchBarController extends Observable {
 
 	private ItemListView itemListView;
 	private ResearchBarView researchBarView;
-	private CraftController cC;
+	private ItemListController ilC;
 
-	public ResearchBarController(ResearchBarView craftView, ItemListView itemListView, CraftController cC) {
+	public ResearchBarController(ResearchBarView craftView, ItemListView itemListView, ItemListController ilC) {
 		this.researchBarView = craftView;
 		this.itemListView = itemListView;
-		this.cC = cC;
+		this.ilC = ilC;
 	}
 
 	void run() {
@@ -23,8 +23,8 @@ public class ResearchBarController extends Observable {
 
 	private void attachEvent() {
 		researchBarView.getTextFieldText().addListener((observable, oldValue, newValue) -> {
-			cC.run();
 			itemListView.searchItem(newValue);
+			ilC.run();
 		});
 	}
 

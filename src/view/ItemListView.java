@@ -25,7 +25,6 @@ public class ItemListView extends Group {
 
 		this.itemList = itemList;
 		this.scene = scene;
-		this.slots = new ArrayList<ItemListSlot>();
 
 		int offset = (isWindows) ? 10 : 0;
 		width = (scene.getWidth() + offset) / 3;
@@ -51,7 +50,8 @@ public class ItemListView extends Group {
 		ScrollPane sp = new ScrollPane();
 		TilePane tp = new TilePane();
 
-		int nbItems = itemList.size();
+		this.slots = new ArrayList<ItemListSlot>();
+
 		int xOffset = 15;
 		int yOffset = 15;
 		int slotSize = 40;
@@ -65,8 +65,7 @@ public class ItemListView extends Group {
 		tp.setHgap(slotMargin);
 		tp.setVgap(slotMargin);
 
-		for (int i = 0; i < nbItems; i++) {
-			Item item = itemList.get(i);
+		for (Item item : itemList) {
 			ItemListSlot slot = new ItemListSlot(item, slotSize, imageMargin);
 			slots.add(slot);
 			tp.getChildren().add(slot);
@@ -86,9 +85,9 @@ public class ItemListView extends Group {
 	public void searchItem(String str) {
 		ArrayList<Item> tmp = new ArrayList<>();
 
-		// Le .contains sur une arraylist est certes tres couteux, mais on a pour
-		// l'instant une petite base d'objets et c'est rapide a faire, mais dans l'ideal
-		// il faudrait que changer cette methode de recherche
+		// Le .contains sur des chaines dans une arraylist est certes tres couteux, mais
+		// on a pour l'instant une petite base d'objets et c'est rapide a faire, mais
+		// dans l'ideal il faudrait que changer cette methode de recherche
 		for (Item item : this.itemList)
 			if (item.getName().toLowerCase().contains(str.toLowerCase())
 					|| item.getDescription().toLowerCase().contains(str.toLowerCase()))

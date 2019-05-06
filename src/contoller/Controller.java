@@ -17,13 +17,13 @@ public class Controller {
 		// TODO Auto-generated method stub
 		ItemListController ilC = new ItemListController(view.itemListView);
 		CraftController cC = new CraftController(view.craftView, model);
-		ResearchBarController rbC = new ResearchBarController(view.researchBarView, view.itemListView, cC);
-//		InventoryController iC = new InventoryController();
+		ResearchBarController rbC = new ResearchBarController(view.researchBarView, view.itemListView, ilC);
+		InventoryController iC = new InventoryController(view.inventoryBarView);
 
 		ilC.run();
 		rbC.run();
 		cC.run();
-//		iC.run();
+		iC.run();
 	}
 
 }
