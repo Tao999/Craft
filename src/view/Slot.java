@@ -8,13 +8,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
-import model.Item;
+import model.ItemModel;
 
 public class Slot extends Group {
 
 	private int itemID;
 	private ImageView iv;
-	private ArrayList<Item> itemList;
+	private ArrayList<ItemModel> itemList;
 	private int imageMargin = 3;
 	private double slotSize;
 	private double posX;
@@ -22,7 +22,7 @@ public class Slot extends Group {
 	private int nbX;
 	private int nbY;
 
-	public Slot(double x, double y, double slotsize, ArrayList<Item> itemList, InnerShadow is) {
+	public Slot(double x, double y, double slotsize, ArrayList<ItemModel> itemList, InnerShadow is) {
 		super();
 		this.posX = x;
 		this.posY = y;
@@ -41,7 +41,7 @@ public class Slot extends Group {
 		this.getChildren().add(r);
 	}
 
-	public Slot(int i, int j, int slotMargin, double slotSize, ArrayList<Item> itemList, InnerShadow is) {
+	public Slot(int i, int j, int slotMargin, double slotSize, ArrayList<ItemModel> itemList, InnerShadow is) {
 		super();
 		this.nbX = i;
 		this.nbY = j;
@@ -64,7 +64,7 @@ public class Slot extends Group {
 
 	public void changeItem(int itemId) {
 		this.itemID = itemId;
-		if (itemId != Item.NOT_AN_ITEM) {
+		if (itemId != ItemModel.NOT_AN_ITEM) {
 			if (this.getChildren().size() > 1)
 				this.getChildren().remove(this.getChildren().size() - 1);
 			iv = new ImageView(getItemFromId(itemId).getImage());
@@ -82,8 +82,8 @@ public class Slot extends Group {
 		return this.itemID;
 	}
 
-	private Item getItemFromId(int itemId) {
-		for (Item item : itemList) {
+	private ItemModel getItemFromId(int itemId) {
+		for (ItemModel item : itemList) {
 			if (item.getId() == itemId)
 				return item;
 		}

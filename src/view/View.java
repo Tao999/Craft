@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import model.Item;
+import model.ItemModel;
 
 public class View {
 
 	private static String OS = System.getProperty("os.name").toLowerCase();
 	private Color bgColor = Color.rgb(127, 172, 255);
-	private ArrayList<Item> itemList = null;
+	private ArrayList<ItemModel> itemList = null;
 
 	public InventoryBarView inventoryBarView;
 	public ItemListView itemListView;
 	public ResearchBarView researchBarView;
 	public CraftView craftView;
 
-	public View(ArrayList<Item> itemList) {
+	public View(ArrayList<ItemModel> itemList) {
 		super();
 		this.itemList = itemList;
 	}

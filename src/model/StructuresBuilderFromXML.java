@@ -10,27 +10,27 @@ import javafx.scene.image.Image;
 
 public class StructuresBuilderFromXML extends DefaultHandler {
 
-	private ArrayList<Item> itemList = new ArrayList<>();
-	private Hashtable<Craft, Integer> craftsList = new Hashtable<>();
+	private ArrayList<ItemModel> itemList = new ArrayList<>();
+	private Hashtable<CraftModel, Integer> craftsList = new Hashtable<>();
 	private String currentElement = "";
 	private String path = "/images/items/";
 	private int currentItemId;
-	private int[] currentTriplet = { -1, -1, Item.NOT_AN_ITEM };
+	private int[] currentTriplet = { -1, -1, ItemModel.NOT_AN_ITEM };
 	private int[][] currentCraftMatrix = {
-		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
-		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
-		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM }
+		{ ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM },
+		{ ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM },
+		{ ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM }
 	};
 
 	public StructuresBuilderFromXML() {
 		super();
 	}
 
-	public ArrayList<Item> getItems() throws Exception {
+	public ArrayList<ItemModel> getItems() throws Exception {
 		return this.itemList;
 	}
 
-	public Hashtable<Craft, Integer> getCrafts() throws Exception {
+	public Hashtable<CraftModel, Integer> getCrafts() throws Exception {
 		return this.craftsList;
 	}
 
@@ -41,7 +41,7 @@ public class StructuresBuilderFromXML extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String name, String qName, Attributes atts) {
 		if (qName.equals("item"))
-			this.itemList.add(new Item());
+			this.itemList.add(new ItemModel());
 		this.currentElement = qName;
 	}
 
@@ -53,7 +53,7 @@ public class StructuresBuilderFromXML extends DefaultHandler {
 			resetTriplet();
 		}
 		if (qName.equals("craft")) {
-			craftsList.put(new Craft(currentCraftMatrix), currentItemId);
+			craftsList.put(new CraftModel(currentCraftMatrix), currentItemId);
 			resetMatrix();
 		}
 		this.currentElement = null;
@@ -96,7 +96,7 @@ public class StructuresBuilderFromXML extends DefaultHandler {
 	private void resetMatrix() {
 		for (int i = 0; i < currentCraftMatrix.length; i++)
 			for (int j = 0; j < currentCraftMatrix[i].length; j++)
-				currentCraftMatrix[i][j] = Item.NOT_AN_ITEM;
+				currentCraftMatrix[i][j] = ItemModel.NOT_AN_ITEM;
 	}
 
 	private void resetTriplet() {

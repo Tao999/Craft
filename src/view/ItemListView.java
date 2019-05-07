@@ -11,17 +11,17 @@ import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import model.Item;
+import model.ItemModel;
 
 public class ItemListView extends Group {
 
 	private double lX;
 	private double width;
 	private Scene scene;
-	private ArrayList<Item> itemList;
+	private ArrayList<ItemModel> itemList;
 	private ArrayList<ItemListSlot> slots;
 
-	public ItemListView(Scene scene, boolean isWindows, ArrayList<Item> itemList) {
+	public ItemListView(Scene scene, boolean isWindows, ArrayList<ItemModel> itemList) {
 
 		this.itemList = itemList;
 		this.scene = scene;
@@ -45,7 +45,7 @@ public class ItemListView extends Group {
 		this.setLayoutX(lX);
 	}
 
-	private Group createList(double width, double height, ArrayList<Item> itemList) {
+	private Group createList(double width, double height, ArrayList<ItemModel> itemList) {
 		Group gp = new Group();
 		ScrollPane sp = new ScrollPane();
 		TilePane tp = new TilePane();
@@ -65,7 +65,7 @@ public class ItemListView extends Group {
 		tp.setHgap(slotMargin);
 		tp.setVgap(slotMargin);
 
-		for (Item item : itemList) {
+		for (ItemModel item : itemList) {
 			ItemListSlot slot = new ItemListSlot(item, slotSize, imageMargin);
 			slots.add(slot);
 			tp.getChildren().add(slot);
@@ -83,12 +83,12 @@ public class ItemListView extends Group {
 	}
 
 	public void searchItem(String str) {
-		ArrayList<Item> tmp = new ArrayList<>();
+		ArrayList<ItemModel> tmp = new ArrayList<>();
 
 		// Le .contains sur des chaines dans une arraylist est certes tres couteux, mais
 		// on a pour l'instant une petite base d'objets et c'est rapide a faire, mais
 		// dans l'ideal il faudrait que changer cette methode de recherche
-		for (Item item : this.itemList)
+		for (ItemModel item : this.itemList)
 			if (item.getName().toLowerCase().contains(str.toLowerCase())
 					|| item.getDescription().toLowerCase().contains(str.toLowerCase()))
 				tmp.add(item);

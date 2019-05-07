@@ -13,8 +13,8 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.Craft;
-import model.Item;
+import model.CraftModel;
+import model.ItemModel;
 import model.Model;
 import model.StructuresBuilderFromXML;
 import view.View;
@@ -30,8 +30,8 @@ public class ApplicationLauncher extends Application {
 //		Template MVC avec JavaFX:
 //		https://github.com/amirdine/personal-projects/tree/master/java/calculatrice/src/com/github/amirdine/project/calculator
 
-		ArrayList<Item> itemList = null;
-		Hashtable<Craft, Integer> craftsList = null;
+		ArrayList<ItemModel> itemList = null;
+		Hashtable<CraftModel, Integer> craftsList = null;
 
 		StructuresBuilderFromXML handler = generateLists();
 		itemList = handler.getItems();
@@ -46,7 +46,7 @@ public class ApplicationLauncher extends Application {
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/crafting_table_icon.png")));
 		primaryStage.show();
 
-		new Controller(view, model).start();
+		new Controller(view, model, itemList).start();
 
 		exitApplication(primaryStage);
 	}

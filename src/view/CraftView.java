@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
-import model.Item;
+import model.ItemModel;
 
 public class CraftView extends Group {
 
@@ -21,10 +21,10 @@ public class CraftView extends Group {
 
 	private ArrayList<Slot> craftingSlots;
 	private ArrayList<Slot> inventorySlots;
-	private ArrayList<Item> itemList;
+	private ArrayList<ItemModel> itemList;
 	private Slot recipiesSlot;
 
-	public CraftView(Scene scene, ArrayList<Item> itemList, boolean isWindows) {
+	public CraftView(Scene scene, ArrayList<ItemModel> itemList, boolean isWindows) {
 
 		this.itemList = itemList;
 		this.craftingSlots = new ArrayList<>();

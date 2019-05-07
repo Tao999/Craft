@@ -2,20 +2,20 @@ package model;
 
 import javafx.scene.image.Image;
 
-public class Item {
+public class ItemModel {
 	public static final int NOT_AN_ITEM = -1;
 	private int id;
 	private String name;
 	private Image image;
 	String desciption;
 
-	public Item() {
+	public ItemModel() {
 		this.desciption = null;
 		this.id = NOT_AN_ITEM;
 		this.name = null;
 	}
 
-	public Item(int id, String name, String description, Image image) {
+	public ItemModel(int id, String name, String description, Image image) {
 		this.id = id;
 		this.name = name;
 		this.image = image;

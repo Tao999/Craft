@@ -9,21 +9,23 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
-import model.Item;
+import model.ItemModel;
 
 public class InventoryBarView extends Group {
 
 	public class IBSlot extends Group {
 
 		private ImageView iv;
-		private ArrayList<Item> itemList;
+		private ArrayList<ItemModel> itemList;
 		private int itemID;
 		private int posX;
+		private int index;
 		private int imageMargin = 3;
 		private int slotSize = 40;
 
-		public IBSlot(int i, int itemId, ArrayList<Item> itemList) {
+		public IBSlot(int i, int itemId, ArrayList<ItemModel> itemList) {
 
+			this.index = i;
 			this.itemList = itemList;
 			this.posX = i * slotSize;
 
@@ -44,7 +46,7 @@ public class InventoryBarView extends Group {
 
 		public void changeItem(int itemId) {
 			this.itemID = itemId;
-			if (itemId != Item.NOT_AN_ITEM) {
+			if (itemId != ItemModel.NOT_AN_ITEM) {
 				if (this.getChildren().size() > 1)
 					this.getChildren().remove(this.getChildren().size() - 1);
 				iv = new ImageView(getItemFromId(itemId).getImage());
@@ -58,8 +60,8 @@ public class InventoryBarView extends Group {
 			}
 		}
 
-		private Item getItemFromId(int itemId) {
-			for (Item item : itemList) {
+		private ItemModel getItemFromId(int itemId) {
+			for (ItemModel item : itemList) {
 				if (item.getId() == itemId)
 					return item;
 			}
@@ -70,6 +72,10 @@ public class InventoryBarView extends Group {
 			return this.itemID;
 		}
 
+		public int getIndex() {
+			return this.index;
+		}
+
 	}
 
 	private int nbSlots;
@@ -77,7 +83,7 @@ public class InventoryBarView extends Group {
 	private double lY;
 	private ArrayList<IBSlot> slots;
 
-	public InventoryBarView(Scene scene, boolean isWindows, ArrayList<Item> itemList) {
+	public InventoryBarView(Scene scene, boolean isWindows, ArrayList<ItemModel> itemList) {
 
 		try {
 			this.nbSlots = 9;
@@ -88,7 +94,7 @@ public class InventoryBarView extends Group {
 			Group slotsGroup = new Group();
 
 			for (int i = 0; i < this.nbSlots; i++)
-				this.slots.add(new IBSlot(i, Item.NOT_AN_ITEM, itemList));
+				this.slots.add(new IBSlot(i, ItemModel.NOT_AN_ITEM, itemList));
 			slotsGroup.getChildren().addAll(this.slots);
 
 			this.getChildren().addAll(slotsGroup);

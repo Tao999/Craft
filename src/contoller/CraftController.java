@@ -6,8 +6,8 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import model.Craft;
-import model.Item;
+import model.CraftModel;
+import model.ItemModel;
 import model.Model;
 import view.CraftView;
 import view.Slot;
@@ -19,9 +19,9 @@ public class CraftController extends Observable {
 	private CraftView craftView;
 	private Model model;
 	private int[][] craftMatrix = {
-		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
-		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM },
-		{ Item.NOT_AN_ITEM, Item.NOT_AN_ITEM, Item.NOT_AN_ITEM }
+		{ ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM },
+		{ ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM },
+		{ ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM, ItemModel.NOT_AN_ITEM }
 	};
 
 	public CraftController(CraftView craftView, Model model) {
@@ -53,9 +53,9 @@ public class CraftController extends Observable {
 			content.put(dataFormat, recipiesSlot.getItemId());
 
 			dragBroard.setContent(content);
-			recipiesSlot.changeItem(Item.NOT_AN_ITEM);
+			recipiesSlot.changeItem(ItemModel.NOT_AN_ITEM);
 			for (Slot craftingSlot : this.craftView.getCraftingSlots())
-				craftingSlot.changeItem(Item.NOT_AN_ITEM);
+				craftingSlot.changeItem(ItemModel.NOT_AN_ITEM);
 			resetCraftingMatrix();
 			MouseEvent.consume();
 		});
@@ -74,8 +74,8 @@ public class CraftController extends Observable {
 			content.put(dataFormat, craftingSlot.getItemId());
 
 			dragBroard.setContent(content);
-			craftingSlot.changeItem(Item.NOT_AN_ITEM);
-			this.craftMatrix[craftingSlot.getIndex()[0]][craftingSlot.getIndex()[1]] = Item.NOT_AN_ITEM;
+			craftingSlot.changeItem(ItemModel.NOT_AN_ITEM);
+			this.craftMatrix[craftingSlot.getIndex()[0]][craftingSlot.getIndex()[1]] = ItemModel.NOT_AN_ITEM;
 			MouseEvent.consume();
 		});
 
@@ -109,8 +109,8 @@ public class CraftController extends Observable {
 
 		craftingSlot.setOnMouseClicked(MouseEvent -> {
 			if (MouseEvent.isControlDown())
-				craftingSlot.changeItem(Item.NOT_AN_ITEM);
-			majCraft(craftingSlot, Item.NOT_AN_ITEM);
+				craftingSlot.changeItem(ItemModel.NOT_AN_ITEM);
+			majCraft(craftingSlot, ItemModel.NOT_AN_ITEM);
 		});
 	}
 
@@ -126,7 +126,7 @@ public class CraftController extends Observable {
 			content.put(dataFormat, itemSlot.getItemId());
 
 			dragBroard.setContent(content);
-			itemSlot.changeItem(Item.NOT_AN_ITEM);
+			itemSlot.changeItem(ItemModel.NOT_AN_ITEM);
 			MouseEvent.consume();
 		});
 
@@ -159,20 +159,20 @@ public class CraftController extends Observable {
 
 		itemSlot.setOnMouseClicked(MouseEvent -> {
 			if (MouseEvent.isControlDown())
-				itemSlot.changeItem(Item.NOT_AN_ITEM);
+				itemSlot.changeItem(ItemModel.NOT_AN_ITEM);
 		});
 
 	}
 
 	private void majCraft(Slot craftingSlot, int data) {
 		craftMatrix[craftingSlot.getIndex()[0]][craftingSlot.getIndex()[1]] = data;
-		this.craftView.getRecipiesSlot().changeItem(model.craftRecipe(new Craft(craftMatrix)));
+		this.craftView.getRecipiesSlot().changeItem(model.craftRecipe(new CraftModel(craftMatrix)));
 	}
 
 	private void resetCraftingMatrix() {
 		for (int i = 0; i < craftMatrix.length; i++)
 			for (int j = 0; j < craftMatrix[0].length; j++)
-				craftMatrix[i][j] = Item.NOT_AN_ITEM;
+				craftMatrix[i][j] = ItemModel.NOT_AN_ITEM;
 	}
 
 }

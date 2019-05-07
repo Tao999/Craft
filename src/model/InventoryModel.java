@@ -1,32 +1,32 @@
 package model;
 
-public class Inventory {
+public class InventoryModel {
 	static final int NB_ITEM = 9;
 
-	private Item[] inventory;
+	private ItemModel[] inventory;
 
-	public Inventory() {
-		this.inventory = new Item[NB_ITEM];
+	public InventoryModel() {
+		this.inventory = new ItemModel[NB_ITEM];
 	}
 
-	public Item getInventory(int index) {// retourne l'item de l'inventaire
-											// choisi (preferer pickInventory)
+	public ItemModel getInventory(int index) {// retourne l'item de l'inventaire
+												// choisi (preferer pickInventory)
 		if (index >= NB_ITEM || index < 0)
 			return null;
 		return this.inventory[index];
 	}
 
-	public boolean putItem(Item item, int index) {// met un item dans une place
-													// choisi, si prise,
-													// retourne false
+	public boolean putItem(ItemModel item, int index) {// met un item dans une place
+														// choisi, si prise,
+														// retourne false
 		if (index >= NB_ITEM || index < 0)
 			return false;
 		this.inventory[index] = item;
 		return true;
 	}
 
-	public boolean pushItem(Item item) {// met un item dans la premiere case libre
-										// libre, sinon retourne false
+	public boolean pushItem(ItemModel item) {// met un item dans la premiere case libre
+		// libre, sinon retourne false
 		int iScan = 0;
 		while (inventory[iScan] != null) {
 			iScan++;
@@ -46,7 +46,7 @@ public class Inventory {
 	public int pickId(int index) {// retourne l'id de l'item choisi, et
 									// l'enleve de l'inventaire
 		if (index >= NB_ITEM || index < 0)
-			return Item.NOT_AN_ITEM;
+			return ItemModel.NOT_AN_ITEM;
 		int temp = this.inventory[index].getId();
 		this.inventory[index] = null;
 		return temp;
@@ -54,10 +54,10 @@ public class Inventory {
 
 	public int getId(int index) {// retoure l'id de l'item choisi
 		if (index >= NB_ITEM || index < 0)
-			return Item.NOT_AN_ITEM;
+			return ItemModel.NOT_AN_ITEM;
 		return this.inventory[index].getId();
 	}
-	
+
 	@Override
 	public String toString() {
 		String sTemp = "";

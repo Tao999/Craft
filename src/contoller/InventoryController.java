@@ -1,21 +1,28 @@
 package contoller;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import model.Item;
+import model.InventoryModel;
+import model.ItemModel;
 import view.InventoryBarView;
 import view.InventoryBarView.IBSlot;
 
 public class InventoryController extends Observable {
 
 	private InventoryBarView inventoryBarView;
+	private InventoryModel inventoryModel;
+	private ArrayList<ItemModel> itemList;
 
-	public InventoryController(InventoryBarView inventoryBarView) {
+	public InventoryController(InventoryBarView inventoryBarView, InventoryModel inventoryModel,
+			ArrayList<ItemModel> itemList) {
 		this.inventoryBarView = inventoryBarView;
+		this.inventoryModel = inventoryModel;
+		this.itemList = itemList;
 	}
 
 	void run() {
@@ -35,7 +42,7 @@ public class InventoryController extends Observable {
 			content.put(dataFormat, itemSlot.getItemId());
 
 			dragBroard.setContent(content);
-			itemSlot.changeItem(Item.NOT_AN_ITEM);
+			itemSlot.changeItem(ItemModel.NOT_AN_ITEM);
 			MouseEvent.consume();
 		});
 
@@ -57,6 +64,7 @@ public class InventoryController extends Observable {
 				dataFormat = (dataFormat == null) ? new DataFormat(Integer.class.getName()) : dataFormat;
 				int data = (Integer) dragBroard.getContent(dataFormat);
 				itemSlot.changeItem(data);
+				inventoryModel.putItem(getItemFromId(data), itemSlot.getIndex());
 				success = true;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -68,9 +76,17 @@ public class InventoryController extends Observable {
 
 		itemSlot.setOnMouseClicked(MouseEvent -> {
 			if (MouseEvent.isControlDown())
-				itemSlot.changeItem(Item.NOT_AN_ITEM);
+				itemSlot.changeItem(ItemModel.NOT_AN_ITEM);
 		});
 
+	}
+
+	private ItemModel getItemFromId(int itemId) {
+		for (ItemModel item : this.itemList) {
+			if (item.getId() == itemId)
+				return item;
+		}
+		return null;
 	}
 
 }

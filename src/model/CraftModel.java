@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Craft {
+public class CraftModel {
 
 	private class Trouple {
 		private int x;
@@ -30,7 +30,7 @@ public class Craft {
 
 	private ArrayList<Trouple> craft;
 
-	public Craft(int[][] tabCraft) {
+	public CraftModel(int[][] tabCraft) {
 		craft = new ArrayList<Trouple>();
 
 		int nbColVide = 0;
@@ -38,8 +38,8 @@ public class Craft {
 		boolean verif = true;
 
 		for (int i = 0; i < 3 && verif; i++) {
-			if (tabCraft[i][0] == Item.NOT_AN_ITEM && tabCraft[i][1] == Item.NOT_AN_ITEM
-					&& tabCraft[i][2] == Item.NOT_AN_ITEM) {
+			if (tabCraft[i][0] == ItemModel.NOT_AN_ITEM && tabCraft[i][1] == ItemModel.NOT_AN_ITEM
+					&& tabCraft[i][2] == ItemModel.NOT_AN_ITEM) {
 				nbColVide++;
 			} else
 				verif = false;
@@ -48,8 +48,8 @@ public class Craft {
 		verif = true;
 
 		for (int i = 0; i < 3 && verif; i++) {
-			if (tabCraft[0][i] == Item.NOT_AN_ITEM && tabCraft[1][i] == Item.NOT_AN_ITEM
-					&& tabCraft[2][i] == Item.NOT_AN_ITEM) {
+			if (tabCraft[0][i] == ItemModel.NOT_AN_ITEM && tabCraft[1][i] == ItemModel.NOT_AN_ITEM
+					&& tabCraft[2][i] == ItemModel.NOT_AN_ITEM) {
 				nbRowVide++;
 			} else
 				verif = false;
@@ -57,7 +57,7 @@ public class Craft {
 
 		for (int i = 0; i < 3 - nbColVide; i++) {
 			for (int j = 0; j < 3 - nbRowVide; j++) {
-				if (tabCraft[i + nbColVide][j + nbRowVide] != Item.NOT_AN_ITEM)
+				if (tabCraft[i + nbColVide][j + nbRowVide] != ItemModel.NOT_AN_ITEM)
 					craft.add(new Trouple(i, j, tabCraft[i + nbColVide][j + nbRowVide]));
 			}
 		}

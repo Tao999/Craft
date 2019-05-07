@@ -8,13 +8,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
-import model.Item;
+import model.ItemModel;
 
 public class ItemListSlot extends Group {
 
-	private Item item;
+	private ItemModel item;
 
-	public ItemListSlot(Item item, int slotSize, int imageMargin) {
+	public ItemListSlot(ItemModel item, int slotSize, int imageMargin) {
 
 		this.item = item;
 
@@ -53,7 +53,7 @@ public class ItemListSlot extends Group {
 		this.getChildren().add(iv);
 	}
 
-	public Item getItem() {
+	public ItemModel getItem() {
 		return this.item;
 	}
 

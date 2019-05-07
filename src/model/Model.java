@@ -4,68 +4,31 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Model {
-	private Inventory inventaire;
-	private ArrayList<Item> itemList;
-	private Hashtable<Craft, Integer> itemResearch;
+
+	public InventoryModel inventaire;
+	private ArrayList<ItemModel> itemList;
+	private Hashtable<CraftModel, Integer> itemResearch;
 
 	public Model() {
-		this.inventaire = new Inventory();
-		this.itemList = new ArrayList<Item>();
-		this.itemResearch = new Hashtable<Craft, Integer>();
-//		this.initBase();
+		this.inventaire = new InventoryModel();
+		this.itemList = new ArrayList<ItemModel>();
+		this.itemResearch = new Hashtable<CraftModel, Integer>();
 	}
 
-	public Model(ArrayList<Item> itemList, Hashtable<Craft, Integer> itemResearch) {
-		this.inventaire = new Inventory();
+	public Model(ArrayList<ItemModel> itemList, Hashtable<CraftModel, Integer> itemResearch) {
+		this.inventaire = new InventoryModel();
 		this.itemList = itemList;
 		this.itemResearch = itemResearch;
-//		this.initBase();
 	}
 
-//	private void initBase() {
-//		int id = Item.NOT_AN_ITEM + 1;
-//		itemList.add(new Item(id++, "Buche de Bois", "", null));// id = 0
-//		itemList.add(new Item(id++, "Planche de Bois", "", null));// id = 1
-//		itemList.add(new Item(id++, "Batton", "", null));
-//		itemList.add(new Item(id++, "Porte", "", null));
-//
-//		int[][] crafto;
-//		crafto = new int[3][3];
-//		for (int i = 0; i < 3; i++)
-//			for (int j = 0; j < 3; j++)
-//				crafto[i][j] = Item.NOT_AN_ITEM;
-//		crafto[0][0] = 0;
-//		this.createCraft(new Craft(crafto), 1);
-//
-//		crafto = new int[3][3];
-//		for (int i = 0; i < 3; i++)
-//			for (int j = 0; j < 3; j++)
-//				crafto[i][j] = Item.NOT_AN_ITEM;
-//		crafto[0][0] = 1;
-//		crafto[0][1] = 1;
-//		this.createCraft(new Craft(crafto), 2);
-//
-//		crafto = new int[3][3];
-//		for (int i = 0; i < 3; i++)
-//			for (int j = 0; j < 3; j++)
-//				crafto[i][j] = Item.NOT_AN_ITEM;
-//		crafto[0][0] = 1;
-//		crafto[0][1] = 1;
-//		crafto[0][2] = 1;
-//		crafto[1][0] = 1;
-//		crafto[1][1] = 1;
-//		crafto[1][2] = 1;
-//		this.createCraft(new Craft(crafto), 3);
-//	}
-
-	public int craftRecipe(Craft craft) {// Transforme un craft en id item
+	public int craftRecipe(CraftModel craft) {// Transforme un craft en id item
 		Object temp = itemResearch.get(craft);
 		if (temp == null)
-			return Item.NOT_AN_ITEM;
+			return ItemModel.NOT_AN_ITEM;
 		return (int) temp;
 	}
 
-	public boolean createCraft(Craft craft, int idResult) {// creer un craft dans la base de donnée
+	public boolean createCraft(CraftModel craft, int idResult) {// creer un craft dans la base de donnée
 		boolean verif = false;
 		for (int i = 0; i < itemList.size() && !verif; i++)
 			if (itemList.get(i).getId() == idResult)
@@ -76,7 +39,7 @@ public class Model {
 		return true;
 	}
 
-	public Item getItemById(int id) {// retourne l'item par rapport a un id
+	public ItemModel getItemById(int id) {// retourne l'item par rapport a un id
 		for (int i = 0; i < itemList.size(); i++) {
 			if (itemList.get(i).getId() == id)
 				return itemList.get(i);
@@ -84,15 +47,15 @@ public class Model {
 		return null;
 	}
 
-	public Item getInventory(int index) {// retourne l'item de l'inventaire
+	public ItemModel getInventory(int index) {// retourne l'item de l'inventaire
 		return inventaire.getInventory(index);
 	}
 
-	public boolean putItem(Item item, int index) {// met un item dans une place
+	public boolean putItem(ItemModel item, int index) {// met un item dans une place
 		return inventaire.pushItem(item);
 	}
 
-	public boolean pushItem(Item item) {// met un item dans la premiere case libre
+	public boolean pushItem(ItemModel item) {// met un item dans la premiere case libre
 		return inventaire.pushItem(item);
 	}
 
