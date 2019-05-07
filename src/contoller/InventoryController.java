@@ -81,13 +81,19 @@ public class InventoryController extends Observable {
 				itemSlot.changeItem(ItemModel.NOT_AN_ITEM);
 		});
 
+		itemSlot.setOnMouseClicked(MouseEvent -> {
+			if (MouseEvent.isShiftDown())
+				// TODO: mettre auto dans la barre d'inventaire
+//				itemSlot.changeItem(ItemModel.NOT_AN_ITEM);
+				System.out.println("Touche appuyee avec SHIFT");
+		});
+
 	}
 
 	private ItemModel getItemFromId(int itemId) {
-		for (ItemModel item : this.itemList) {
+		for (ItemModel item : this.itemList)
 			if (item.getId() == itemId)
 				return item;
-		}
 		return null;
 	}
 
