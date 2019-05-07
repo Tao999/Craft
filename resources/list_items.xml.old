@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<itemlist>
+	<!-- <item>
+		<id>0</id>
+		<name>Air</name>
+		<description>Air - Useless</description>
+		<image>0-0.png</image>
+	</item> -->
+	<item>
+		<id>1</id>
+		<name>Stone</name>
+		<description>Stone</description>
+		<image>1-0.png</image>
+	</item>
+	<item>
+		<id>2</id>
+		<name>Grass</name>
+		<description>Grass</description>
+		<image>2-0.png</image>
+	</item>
+	<item>
+		<id>3</id>
+		<name>Dirt</name>
+		<description>Dirt</description>
+		<image>3-0.png</image>
+	</item>
+	<item>
+		<id>4</id>
+		<name>Cobblestone</name>
+		<description>Cobblestone</description>
+		<image>4-0.png</image>
+	</item>
+	<item>
+		<id>5</id>
+		<name>Oak Wood Plank</name>
+		<description>Oak Wood Plank</description>
+		<image>5-0.png</image>
+	</item>
+	<item>
+		<id>6</id>
+		<name>Oak Sapling</name>
+		<description>Oak Sapling</description>
+		<image>6-0.png</image>
+	</item>
+	<item>
+		<id>7</id>
+		<name>Bedrock</name>
+		<description>Bedrock</description>
+		<image>7-0.png</image>
+	</item>
+<!-- 	<item>
+		<id>8</id>
+		<name>Flowing Water</name>
+		<description>Flowing Water - Useless</description>
+		<image>8-0.png</image>
+	</item> -->
+<!-- 	<item>
+		<id>9</id>
+		<name>Still Water</name>
+		<description>Still Water - Useless</description>
+		<image>9-0.png</image>
+	</item> -->
+<!-- 	<item>
+		<id>10</id>
+		<name>Flowing Lava</name>
+		<description>Flowing Lava - Useless</description>
+		<image>10-0.png</image>
+	</item> -->
+<!-- 	<item>
+		<id>11</id>
+		<name>Still Lava</name>
+		<description>Still Lava - Useless</description>
+		<image>11-0.png</image>
+	</item> -->
+	<item>
+		<id>12</id>
+		<name>Sand</name>
+		<description>Sand</description>
+		<image>12-0.png</image>
+	</item>
+	<item>
+		<id>13</id>
+		<name>Gravel</name>
+		<description>Gravel</description>
+		<image>13-0.png</image>
+	</item>
+	<item>
+		<id>14</id>
+		<name>Gold Ore</name>
+		<description>Gold Ore</description>
+		<image>14-0.png</image>
+	</item>
+	<item>
+		<id>15</id>
+		<name>Iron Ore</name>
+		<description>Iron Ore</description>
+		<image>15-0.png</image>
+	</item>
+	<item>
+		<id>16</id>
+		<name>Coal Ore</name>
+		<description>Coal Ore</description>
+		<image>16-0.png</image>
+	</item>
+	<item>
+		<id>17</id>
+		<name>Oak Wood</name>
+		<description>Oak Wood</description>
+		<image>17-0.png</image>
+	</item>
+	<item>
+		<id>18</id>
+		<name>Oak Leaves</name>
+		<description>Oak Leaves</description>
+		<image>18-0.png</image>
+	</item>
+	<item>
+		<id>19</id>
+		<name>Sponge</name>
+		<description>Sponge</description>
+		<image>19-0.png</image>
+	</item>
+	<item>
+		<id>20</id>
+		<name>Glass</name>
+		<description>Glass</description>
+		<image>20-0.png</image>
+	</item>
+	<item>
+		<id>21</id>
+		<name>Lapis Lazuli Ore</name>
+		<description>Lapis Lazuli Ore</description>
+		<image>21-0.png</image>
+	</item>
+	<item>
+		<id>22</id>
+		<name>Lapis Lazuli Block</name>
+		<description>Lapis Lazuli Block</description>
+		<image>22-0.png</image>
+	</item>
+	<item>
+		<id>23</id>
+		<name>Dispenser</name>
+		<description>Dispenser</description>
+		<image>23-0.png</image>
+	</item>
+	<item>
+		<id>24</id>
+		<name>Sandstone</name>
+		<description>Sandstone</description>
+		<image>24-0.png</image>
+	</item>
+	<item>
+		<id>25</id>
+		<name>Note Block</name>
+		<description>Note Block</description>
+		<image>25-0.png</image>
+	</item>
+<!-- 	<item>
+		<id>26</id>
+		<name>Bed</name>
+		<description>Bed</description>
+		<image>26-0.png</image>
+	</item> -->
+	<item>
+		<id>27</id>
+		<name>Powered Rail</name>
+		<description>Powered Rail</description>
+		<image>27-0.png</image>
+	</item>
+	<item>
+		<id>28</id>
+		<name>Detector Rail</name>
+		<description>Detector Rail</description>
+		<image>28-0.png</image>
+	</item>
+	<item>
+		<id>29</id>
+		<name>Sticky Piston</name>
+		<description>Sticky Piston</description>
+		<image>29-0.png</image>
+	</item>
+	<item>
+		<id>30</id>
+		<name>Cobweb</name>
+		<description>Cobweb</description>
+		<image>30-0.png</image>
+	</item>
+	<item>
+		<id>31</id>
+		<name>Grass</name>
+		<description>Tall Grass</description>
+		<image>31-1.png</image>
+	</item>
+	<item>
+		<id>32</id>
+		<name>Dead Bush</name>
+		<description>Dead Bush</description>
+		<image>32-0.png</image>
+	</item>
+	<item>
+		<id>33</id>
+		<name>Piston</name>
+		<description>Piston</description>
+		<image>33-0.png</image>
+	</item>
+<!-- 	<item>
+		<id>34</id>
+		<name>Piston Head</name>
+		<description>Piston Head</description>
+		<image>34-0.png</image>
+	</item> -->
+	<item>
+		<id>35</id>
+		<name>Whool</name>
+		<description>Whool</description>
+		<image>35-0.png</image>
+	</item>
+<!-- 	<item>
+		<id>36</id>
+		<name></name>
+		<description></description>
+		<image></image>
+	</item> -->
+	<item>
+		<id>37</id>
+		<name>Dandelion</name>
+		<description>Flower - Dandelion</description>
+		<image>37-0.png</image>
+	</item>
+	<item>
+		<id>38</id>
+		<name>Poppy</name>
+		<description>Flower - Poppy</description>
+		<image>38-0.png</image>
+	</item>
+	<item>
+		<id>39</id>
+		<name>Brown Mushroom</name>
+		<description>Brown Mushroom</description>
+		<image>39-0.png</image>
+	</item>
+	<item>
+		<id>40</id>
+		<name>Red Mushroom</name>
+		<description>Red Mushroom</description>
+		<image>40-0.png</image>
+	</item>
+	<item>
+		<id>41</id>
+		<name>Gold Block</name>
+		<description>Gold Block</description>
+		<image>41-0.png</image>
+	</item>
+	<item>
+		<id>42</id>
+		<name>Iron Block</name>
+		<description>Iron Block</description>
+		<image>42-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>2</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>1</x>
+				<y>0</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>1</x>
+				<y>1</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>1</x>
+				<y>2</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>2</x>
+				<y>0</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>2</x>
+				<y>1</y>
+				<id_t>265</id_t>
+			</triplet>
+			<triplet>
+				<x>2</x>
+				<y>2</y>
+				<id_t>265</id_t>
+			</triplet>
+		</craft>
+	</item>
+	<item>
+		<id>43</id>
+		<name>Double Stone Slab</name>
+		<description>Double Stone Slab</description>
+		<image>43-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>44</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>44</id_t>
+			</triplet>
+		</craft>
+	</item>
+	<item>
+		<id>44</id>
+		<name>Stone Slab</name>
+		<description>Stone Slab</description>
+		<image>44-0.png</image>
+	</item>
+	<item>
+		<id>45</id>
+		<name>Bricks</name>
+		<description>Bricks</description>
+		<image>45-0.png</image>
+	</item>
+	<item>
+		<id>46</id>
+		<name>TNT</name>
+		<description>TNT</description>
+		<image>46-0.png</image>
+	</item>
+	<item>
+		<id>47</id>
+		<name>Bookshelf</name>
+		<description>Bookshelf</description>
+		<image>47-0.png</image>
+	</item>
+	<item>
+		<id>48</id>
+		<name>Moss Stone</name>
+		<description>Moss Stone</description>
+		<image>48-0.png</image>
+	</item>
+	<item>
+		<id>49</id>
+		<name>Obsidian</name>
+		<description>Obsidian</description>
+		<image>49-0.png</image>
+	</item>
+	<item>
+		<id>50</id>
+		<name>Torch</name>
+		<description>A torch, can be crafted with coal and a stick of wook</description>
+		<image>50-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>263</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>280</id_t>
+			</triplet>
+		</craft>
+	</item>
+	<item>
+		<id>51</id>
+		<name>Fire</name>
+		<description>Fire</description>
+		<image>51-0.png</image>
+	</item>
+	<item>
+		<id>52</id>
+		<name>Monster Spawner</name>
+		<description>Monster Spawner</description>
+		<image>52-0.png</image>
+	</item>
+	<item>
+		<id>263</id>
+		<name>Coal</name>
+		<description>Coal</description>
+		<image>263-0.png</image>
+	</item>
+	<item>
+		<id>265</id>
+		<name>Iron Ingot</name>
+		<description>Iron Ingot</description>
+		<image>265-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>15</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>263</id_t>
+			</triplet>
+		</craft>
+	</item>
+	<item>
+		<id>266</id>
+		<name>Gold Ingot</name>
+		<description>Gold Ingot</description>
+		<image>266-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>14</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>263</id_t>
+			</triplet>
+		</craft>
+	</item>
+	<item>
+		<id>267</id>
+		<name>Iron Sword</name>
+		<description>Iron Sword</description>
+		<image>267-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>15</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>15</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>2</y>
+				<id_t>280</id_t>
+			</triplet>
+		</craft>
+	</item>
+	<item>
+		<id>280</id>
+		<name>Stick</name>
+		<description>A stick of wood</description>
+		<image>280-0.png</image>
+		<craft>
+			<triplet>
+				<x>0</x>
+				<y>0</y>
+				<id_t>5</id_t>
+			</triplet>
+			<triplet>
+				<x>0</x>
+				<y>1</y>
+				<id_t>5</id_t>
+			</triplet>
+		</craft>
+	</item>
+</itemlist>
