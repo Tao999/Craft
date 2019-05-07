@@ -40,6 +40,7 @@ public class InventoryController extends Observable {
 			DataFormat dataFormat = DataFormat.lookupMimeType(Integer.class.getName());
 			dataFormat = (dataFormat == null) ? new DataFormat(Integer.class.getName()) : dataFormat;
 			content.put(dataFormat, itemSlot.getItemId());
+			inventoryModel.pickId(itemSlot.getIndex());
 
 			dragBroard.setContent(content);
 			itemSlot.changeItem(ItemModel.NOT_AN_ITEM);
@@ -65,6 +66,7 @@ public class InventoryController extends Observable {
 				int data = (Integer) dragBroard.getContent(dataFormat);
 				itemSlot.changeItem(data);
 				inventoryModel.putItem(getItemFromId(data), itemSlot.getIndex());
+
 				success = true;
 			} catch (Exception e) {
 				e.printStackTrace();
